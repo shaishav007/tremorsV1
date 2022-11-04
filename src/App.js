@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 //importing leaflet stuff here
-import { MapContainer, TileLayer, useMap,Marker,Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker,Popup } from 'react-leaflet'
 
 
 
