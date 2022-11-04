@@ -39,7 +39,7 @@ useEffect(()=>{
     url:'https://api.geocodify.com/v2/geocode',
     params:{
       api_key:'88281bd6042c6bf0c44b65328bcf5a51fa8c949b',
-      q:'Ottawa'
+      q:'Tokyo'
     }
   }).then((res)=>{
     // so this results in multiple entries of all places that match query. Like there are 10 Torontos and 10 Ottawas because the idiots who settled here couldn't find unique names. Might as well have used traditional indigenous names, it would have saved me an hour. so the features part contains the closest match to the query so the first item in that is going to be our location bounding box
