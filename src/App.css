@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+/* this is super important */
+.leaflet-container{
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+}
