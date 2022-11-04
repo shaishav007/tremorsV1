@@ -2,34 +2,27 @@
 import './App.css';
 import axios from 'axios';
 import { useEffect } from 'react';
+import FrontPage from './components/FrontPage';
+import About from './components/About';
+import { Routes, Route } from 'react-router-dom';
+import MapPage from './components/MapPage';
 
 function App() {
-//testing apis starts now.
-useEffect(()=>{
 
-  axios({
-    url:'https://earthquake.usgs.gov/fdsnws/event/1/query',
-    params:{
-      format:'geojson',
-      starttime:'2022-10-03',
-      endtime:'2022-11-03',
-      orderby:'magnitude',
-      latitude:43.651070, 
-      longitude:-79.347015,
-      maxradiuskm:1000,
-    }
-  }).then((res)=>{
-    console.log(res.data);
 
-  }).catch((err)=>{
-    console.log(err);
-  })
-},[]);
-
+  
   return (
+    
     <div className="App">
-      
+
+      <Routes>
+            <Route path="/" element={ <FrontPage /> } />
+            <Route path='/about' element={ <About /> } />
+            <Route path='/mapPage' element={ <MapPage /> } />
+            
+      </Routes>
     </div>
+
   );
 }
 
