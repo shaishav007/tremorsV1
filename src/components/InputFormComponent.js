@@ -26,6 +26,7 @@ const getPlaceQuery=(e)=>{
         //save the coordinates in this exact order otherwise it won't work
         const coords = res.data.response.features[0].geometry.coordinates;
         //set coords now - UPDATE STATE
+        console.log(e.target.value,coords);
         setPlaceCoords(coords);
 
         //justCozData is in
