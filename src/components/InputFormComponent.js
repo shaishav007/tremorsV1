@@ -114,6 +114,7 @@ const setEverythingUp=()=>{
         <input type="date" name='startDate' onChange={getDateQuery} disabled={last24hours}/>
         <label htmlFor='endDate'>End Date </label>
         <input type="date" name='endDate' onChange={getDateQuery} disabled={last24hours}/>
+        
     </div>
   )
 }
