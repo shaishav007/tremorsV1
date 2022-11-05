@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { geoJson } from 'leaflet';
+
 import React, { useEffect, useState } from 'react'
-import { MapContainer, TileLayer, Marker,Popup } from 'react-leaflet'
+
 import InputFormComponent from './InputFormComponent'
-
-
+import DisplayMap from './DisplayMap';
+import MyComponent from  './DisplayMap'
 const MapPage = () => {
 //state to get data from the input form // an object which is just place, magnitude, ....
 const [userChoices,setUserChoices] = useState({});
@@ -44,17 +44,8 @@ useEffect(()=>{
         <InputFormComponent getFinalQuery= {setUserChoices}/>
 {/* if user has chosen then just put the fucking map on the table */}   {
         hasUserChosen?
-        <MapContainer center={[userChoices.latitude, userChoices.longitude]} zoom={13} scrollWheelZoom={false}>
-            <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={[userChoices.latitude,userChoices.longitude]}>
-                <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-            </Marker>
-        </MapContainer>
+        <DisplayMap latitude={userChoices.latitude} longitude={userChoices.longitude}/>
+       
         :<>Try filling the form up</>
         }
     </div>
