@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios';
-import { useState } from 'react';
+import { useState,useRef } from 'react';
 const InputFormComponent = (props) => {
 
     //lets add the states
@@ -11,32 +11,37 @@ const InputFormComponent = (props) => {
     const [endDateState,setEndDate]= useState("2022-11-03")
     const [isDataIn,setIsDataIn]=useState(false);
 
+    const placeRef = useRef('');
+
+    const[last24hours,setlast24Hours]= useState(false)
 //define the getPlaceQuery function
 const getPlaceQuery=(e)=>{
- 
-    let location = e.target.value;
+
     //run the api call here and get something.
-    axios({
-        url:'https://api.geocodify.com/v2/geocode',
-        params:{
-          api_key:'d932e384a601c13eefe2d9926ebe5c44b867c22b',
-          q:e.target.value
-        }
-      }).then((res)=>{
-        //save the coordinates in this exact order otherwise it won't work
-        const coords = res.data.response.features[0].geometry.coordinates;
-        //set coords now - UPDATE STATE
-        console.log(e.target.value,coords);
-        setPlaceCoords(coords);
+    //don't start search until the search bar has atleast 4 letters in it
+    if(placeRef.current.value.length>3){
+        axios({
+            url:'https://api.geocodify.com/v2/geocode',
+            params:{
+            api_key:'d932e384a601c13eefe2d9926ebe5c44b867c22b',
+            q:placeRef.current.value
+            }
+        }).then((res)=>{
+            //save the coordinates in this exact order otherwise it won't work
 
-        //justCozData is in
-        setIsDataIn(true);
-        //call this function once we get all the coords
-        setEverythingUp();
+            const coords = res.data.response.features[0].geometry.coordinates;
+            //set coords now - UPDATE STATE
+            setPlaceCoords(coords);
 
-      }).catch((err)=>{
-        console.log(err)
-      })
+            //justCozData is in
+            setIsDataIn(true);
+            //call this function once we get all the coords
+            setEverythingUp();
+
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
     
 }
 
@@ -79,18 +84,31 @@ const setEverythingUp=()=>{
     }
 }
 
+    const handleLast24Hours=(e)=>{
+        //if this is true, disable everything else
+        if(e.target.checked){
+            setlast24Hours(true);
+            //so now this guy needs to tell the main page to run a different query altogether
+            props.getFinalQuery('last24Hours');
+        }else{
+            setlast24Hours(false);
+        }
+    }
+
   return (
     <div>
+        <label htmlFor='last24hours'>Last 24 hours</label>
+        <input type="checkbox" name='last24hours' onChange={handleLast24Hours}/>
         <label htmlFor='place'>Enter the location</label>
-        <input type="text" name='place' onKeyDown={getPlaceQuery}/>
+        <input type="text" name='place' onChange={getPlaceQuery} ref={placeRef} disabled={last24hours}/>
         <label htmlFor='minValue'>Min</label>
-        <input type="range" name='minValue' min="0" max="10" step="0.25" onChange={getRangeQuery}/>
+        <input type="range" name='minValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours}/>
         <label htmlFor='minValue'>Max </label>
-        <input type="range" name='maxValue' min="0" max="10" step="0.25" onChange={getRangeQuery}/>
+        <input type="range" name='maxValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours}/>
         <label htmlFor='startDate'>Start Date </label>
-        <input type="date" name='startDate' onChange={getDateQuery}/>
+        <input type="date" name='startDate' onChange={getDateQuery} disabled={last24hours}/>
         <label htmlFor='endDate'>End Date </label>
-        <input type="date" name='endDate' onChange={getDateQuery}/>
+        <input type="date" name='endDate' onChange={getDateQuery} disabled={last24hours}/>
     </div>
   )
 }

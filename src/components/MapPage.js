@@ -11,9 +11,24 @@ const [userChoices,setUserChoices] = useState({});
 const [hasUserChosen,setHasUserChosen]=useState(false);
 
 useEffect(()=>{
-    //make the final api call here so that we can get the stuff ready also refresh the map logic 
-    if(userChoices.min!==undefined){
-       
+    //since we need to see the last 24 hours data, we will have to make sure that userChoices is checked for that
+    if(userChoices==='last24Hours'){
+        axios({
+            url:'https://earthquake.usgs.gov/fdsnws/event/1/query',
+            params:{
+                format:'geojson',
+                starttime:'2022-11-03',
+                endtime:'2022-11-04'
+            }
+        }).then((res)=>{
+            //now that we have all the data from the last 24 hours, we can finally plot them in the marker.
+            console.log(res.data);
+        }).catch((err)=>{
+            console.log(err);
+        });
+    }
+    else if(userChoices.min!==undefined){
+        //make the final api call here so that we can get the stuff ready also refresh the map logic 
        setHasUserChosen(true);
        //so we have tested the map, lets run our original api
 
@@ -44,7 +59,7 @@ useEffect(()=>{
         <InputFormComponent getFinalQuery= {setUserChoices}/>
 {/* if user has chosen then just put the fucking map on the table */}   {
         hasUserChosen?
-        <DisplayMap latitude={userChoices.latitude} longitude={userChoices.longitude}/>
+        <DisplayMap latitude={userChoices.latitude} longitude={userChoices.longitude} />
        
         :<>Try filling the form up</>
         }
