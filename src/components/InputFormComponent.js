@@ -89,7 +89,12 @@ const setEverythingUp=()=>{
         if(e.target.checked){
             setlast24Hours(true);
             //so now this guy needs to tell the main page to run a different query altogether
-            props.getFinalQuery('last24Hours');
+            const finalQuery={
+                latitude:40.86,
+                longitude:34.56,
+                last24Hours:true
+            }
+            props.getFinalQuery(finalQuery);
         }else{
             setlast24Hours(false);
         }
