@@ -9,11 +9,45 @@ const MapPage = () => {
 //state to get data from the input form // an object which is just place, magnitude, ....
 const [userChoices,setUserChoices] = useState({});
 const [hasUserChosen,setHasUserChosen]=useState(false);
+const [markerData,setMarkerData]=useState([]);
+//just another function to reformat data to be passed on to map components
+const generateMarkerInfo=(feed)=>{
+    let markerInfo = [];
+    feed.features.forEach((item)=>{
+        markerInfo.push({
+            coords:item.geometry.coordinates,
+            popupInfo:{
+                    place:item.properties.place,
+                    magnitude:item.properties.mag,
+                }
+        })
+    });
+    //update the state now to have marker data
+    setMarkerData(markerInfo);
+}
 
 useEffect(()=>{
-    //make the final api call here so that we can get the stuff ready also refresh the map logic 
-    if(userChoices.min!==undefined){
-       
+    //since we need to see the last 24 hours data, we will have to make sure that userChoices is checked for that
+    if(userChoices.last24Hours===true){
+        axios({
+            url:'https://earthquake.usgs.gov/fdsnws/event/1/query',
+            params:{
+                format:'geojson',
+                starttime:'2022-11-03',
+                endtime:'2022-11-04'
+            }
+        }).then((res)=>{
+            //now that we have all the data from the last 24 hours, we can finally plot them in the marker.
+            console.log(res.data);
+            //now lets make a data structure for markers and put good data into them
+            generateMarkerInfo(res.data);
+            setHasUserChosen(true);
+        }).catch((err)=>{
+            console.log(err);
+        });
+    }
+    else if(userChoices.min!==undefined){
+        //make the final api call here so that we can get the stuff ready also refresh the map logic 
        setHasUserChosen(true);
        //so we have tested the map, lets run our original api
 
@@ -44,7 +78,7 @@ useEffect(()=>{
         <InputFormComponent getFinalQuery= {setUserChoices}/>
 {/* if user has chosen then just put the fucking map on the table */}   {
         hasUserChosen?
-        <DisplayMap latitude={userChoices.latitude} longitude={userChoices.longitude}/>
+        <DisplayMap latitude={userChoices.latitude} longitude={userChoices.longitude} markerPopupInfo={markerData}/>
        
         :<>Try filling the form up</>
         }
