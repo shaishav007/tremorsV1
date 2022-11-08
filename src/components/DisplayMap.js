@@ -1,6 +1,6 @@
-import React, { useEffect,useState } from 'react';
+
 import { MapContainer, TileLayer, Popup,useMap ,Marker} from 'react-leaflet';
-import { geoJson } from 'leaflet';
+
 //this is exactly like any other component just defined inside the file instead of outside, THIS IS responsible for changing the center
 function ChangeView({center,zoom}){
     const map = useMap();
@@ -9,7 +9,8 @@ function ChangeView({center,zoom}){
 }
 
 const DisplayMap = (props) => {
-    console.log(props.markerPopupInfo[0].coords[1],props.markerPopupInfo[0].coords[0])
+    // console.log(props.markerPopupInfo[0].coords[1],props.markerPopupInfo[0].coords[0])
+    console.log('marker popup info',props.markerPopupInfo);
     return (
         <div>
 
@@ -24,6 +25,7 @@ const DisplayMap = (props) => {
                         {/* The data is stored in markerPopupInfo, for each item in it generate a marker component. */}
                         
                         {
+                            props.markerPopupInfo!==[]?
                             props.markerPopupInfo.map((item)=>{
                                 return(
                                 <Marker position={[item.coords[1],item.coords[0]]} className="marker">
@@ -35,6 +37,7 @@ const DisplayMap = (props) => {
                                 </Marker>
                                 )
                             })
+                            :<></>
                         }
                 </MapContainer>
         </div>

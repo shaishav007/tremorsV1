@@ -3,36 +3,6 @@ import { useState } from 'react';
 const HeroStats = (props) => {
     const [index,setIndex]=useState(0);
     const heros=['geology teachers','Rich Mortal','Strong Good']
-    // props.heroData = {
-    
-    //     'Rich Mortal':{
-    //         incidents:[{
-    //           eventId:'abcd',
-    //           mag:5.5 ,
-    //           description:'italy' 
-    //         }],
-    //         resolved:1,
-    //         vacation:0,
-    //     },
-    //     'Strong Good':{
-    //         incidents:[{
-    //             eventId:'abcd',
-    //             mag:5.5 ,
-    //             description:'italy' 
-    //           }],
-    //           resolved:1,
-    //           vacation:0,
-    //     },
-    //     'geology teachers':{
-    //         incidents:[{
-    //             eventId:'abcd',
-    //             mag:5.5 ,
-    //             description:'italy' 
-    //           }],
-    //           resolved:1,
-    //           vacation:0,
-    //     }
-    // }
 
     const changeIndex=(e)=>{
         let updatedIndex=0;
