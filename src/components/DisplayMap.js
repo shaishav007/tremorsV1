@@ -29,7 +29,8 @@ const DisplayMap = (props) => {
                                 <Marker position={[item.coords[1],item.coords[0]]} className="marker">
                                     <Popup>
                                     Magnitude:{item.popupInfo.magnitude}, <br/>
-                                    Place:{item.popupInfo.place}
+                                    Place:{item.popupInfo.place},
+                                    responder:{item.popupInfo.responder}
                                     </Popup>
                                 </Marker>
                                 )

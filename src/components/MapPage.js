@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import InputFormComponent from './InputFormComponent'
 import DisplayMap from './DisplayMap';
 import MyComponent from  './DisplayMap'
-
+import HeroStats from './HeroStats';
 //this is importing from the npm install firebase thing
 import {get, getDatabase, push, ref, set} from 'firebase/database'
 
@@ -20,88 +20,103 @@ const [hasUserChosen,setHasUserChosen]=useState(false);
 const [markerData,setMarkerData]=useState([]);
 
 const[isDataBaseReady,setIsDatabaseReady]= useState(false);
+
+//set it on app load
+const[heroInfo,setHeroInfo]= useState({})
+const[isHeroObjectReady,SetIsHeroObjectReady]=useState(false);
+//current entries in the database
+const[currentDatabaseEntry,setCurrentDatabaseEntry]=useState({});
+
 //just another function to reformat data to be passed on to map components
 
-const checkIfDatabaseReady=()=>{
+const writeToFirebase=(feed)=>{
+    feed.features.forEach((item)=>{
+        //for each entry in the earthquakes
+        let responder = 'geology teachers';
+        //if event magnitude is greater than 3.5 item.properties.mag
+        if(item.properties.mag>=3.5){
+            responder='Rich Mortal';
+            
+        }else if(item.properties.mag>6){
+            responder='Strong Good';
+        }else if(item.properties.mag>7){
+            responder='all';
+        }
 
+        //update the current entry
+        updateCurrentEntry(item,responder);
+    });
+
+    //now that it has the updated entry call firebase and set stuff straight
     const database = getDatabase(Firebase);
-    // //this is just the location where you want to push the data
-    //if there is no responder entry in the database, add the fucking entry
-    const dbRef = ref(database);
-    const supes = ['geology teachers','Rich Mortal','Strong Good'];
+    const dbRef= ref(database);
+    //replaces whatever in the data right now with the currentEntry
+    set(dbRef,currentEntry);
 
-    supes.forEach((supe)=>{
-        get(dbRef,supe).then((snapshot)=>{
-            if(snapshot.val()===null){
-                console.log(supe,'not found creating entry')
-                const entry={
-                            incidents:[],
-                          vacations:0,
-                          resolved:0,
-                          pictureUrl:'https://mir-s3-cdn-cf.behance.net/project_modules/1400/38004d25315373.56343ce0a4ad1.jpg'
-                        }
-                set(ref(database,supe),entry);
-                  
-            }else{
-                // console.log(supe,'found');
-            }
-        })
-    })
-    setIsDatabaseReady(true);
+    //after we wrote stuff to firebase, now lets set Hero info
+    setHeroInfo(currentEntry);
+    SetIsHeroObjectReady(true);
 }
 
-const addEntryToDatabase=(incident,responder)=>{
-    if(!isDataBaseReady){
-        checkIfDatabaseReady();
-    }
-
-        console.log(incident.properties.mag,responder,incident.id);
-        //whenever we have an entry we just need to put the right things in the right place
-    let currentDataOfResponder={}
-        //get the right data
-        const database = getDatabase(Firebase);
-        const dbRef = ref(database,responder);
-        get(dbRef,responder).then((snapshot)=>{
-            if(snapshot.val()===null){
-                console.log('no entry found for',responder)
-            }
-            //snapshot.val() contains our data
-            const dataObject = snapshot.val();
-            currentDataOfResponder.incidents=dataObject.incidents;
-            currentDataOfResponder.resolved=dataObject.resolved;
-            currentDataOfResponder.vacations=dataObject.vacations;
-            console.log('current data for',responder,currentDataOfResponder);
-        });
+//lets say the current entry in the database is
+let currentEntry={
     
+    'Rich Mortal':{
+        incidents:[{
+          eventId:'abcd',
+          mag:5.5 ,
+          description:'italy' 
+        }],
+        resolved:1,
+        vacation:0,
+    },
+    'Strong Good':{
+        incidents:[{
+            eventId:'abcd',
+            mag:5.5 ,
+            description:'italy' 
+          }],
+          resolved:1,
+          vacation:0,
+    },
+    'geology teachers':{
+        incidents:[{
+            eventId:'abcd',
+            mag:5.5 ,
+            description:'italy' 
+          }],
+          resolved:1,
+          vacation:0,
+    }
+}
+
+const updateCurrentEntry= (incident,responder)=>{
+    let presentData= currentEntry[`${responder}`];
+    let currentIncidents = [...presentData.incidents];
+    let resolved=presentData.resolved;
+    let vacation = presentData.vacation;
+
+    currentIncidents.push({
+        eventId:incident.id,
+        mag:incident.properties.mag,
+        description:incident.properties.place
+    })
+    resolved+=1;
+    vacation=Math.floor(resolved/10);
+
+    //we calculated the new values now just putting it in the global variable
+    currentEntry[`${responder}`]={
+        incidents:currentIncidents,
+        resolved:resolved,
+        vacation:vacation
+    }
+    // console.log(currentIncidents,resolved,vacation,responder);
+
+
 }
 
 const generateMarkerInfo=(feed)=>{
-    //there is definitely going to be a firebase CALL in this chunk
-
     
-    // //push some data at the ref
-    // push(dbRef,"This should work.");
-    /*sample data structure - general geology teachers, Rich mortal(3.5-6), Strong good
-    //Rich Mortal:{
-            incidents:[
-                  {eventid:usnic1000,
-                  description: description of the event,
-                   magnitude:3.5 -6},
-                  {eventid:usnic1000,
-                  description: description of the event},
-                  {eventid:usnic1000,
-                  description: description of the event}
-                ],
-            vacations,
-            resolved:,
-            pictureUrl:
-    // }
-                what all do we need to extract?
-                to display on the app. magnitude somehow?
-
-
-    */
-
 
     let markerInfo = [];
     feed.features.forEach((item)=>{
@@ -117,14 +132,14 @@ const generateMarkerInfo=(feed)=>{
         }else if(item.properties.mag>7){
             responder='all';
         }
-        addEntryToDatabase(item,responder);
-        
+
         //we are adding 1 marker for each incident
         markerInfo.push({
             coords:item.geometry.coordinates,
             popupInfo:{
                     place:item.properties.place,
                     magnitude:item.properties.mag,
+                    responder:responder
                 }
         })
     });
@@ -135,6 +150,23 @@ const generateMarkerInfo=(feed)=>{
 useEffect(()=>{
     //since we need to see the last 24 hours data, we will have to make sure that userChoices is checked for that
 
+    //lets see what we have in the database
+    const database = getDatabase(Firebase);
+    const dbRef = ref(database);
+    get(dbRef).then((snapshot)=>{
+        if(snapshot===null){
+            //if there is no values inside
+            console.log('Nothing is inside');
+        }else{
+            //update currentDatabaseEntry
+            console.log('snapshot',snapshot.val())
+            setCurrentDatabaseEntry(snapshot.val());
+        }
+
+    }).catch((err)=>{
+        //if any error then log it
+        console.log(err);
+    })    
  
 
     if(userChoices.last24Hours===true){
@@ -150,11 +182,8 @@ useEffect(()=>{
             console.log(res.data);
             //now lets make a data structure for markers and put good data into them
             generateMarkerInfo(res.data);
-
          
             //since this is where get user data, we will also call firebase at some place around here, ONLY after we get data
-
-
             setHasUserChosen(true);
         }).catch((err)=>{
             console.log(err);
@@ -188,6 +217,28 @@ useEffect(()=>{
 
 },[userChoices]);
 
+useEffect(()=>{
+    //get the present data so that we can get the present data
+    const presentDateObject = new Date()
+    const presentDate = `${presentDateObject.getFullYear()}-${presentDateObject.getMonth()+1}-${presentDateObject.getDate()}`;
+    console.log(presentDate);
+    axios({
+        url:'https://earthquake.usgs.gov/fdsnws/event/1/query',
+        params:{
+            format:'geojson',
+            starttime:'2022-11-03',
+            endtime:presentDate,
+        }
+    }).then((res)=>{
+        console.log(res.data);
+        //write this to firebase
+        writeToFirebase(res.data);
+
+    }).catch((err)=>{
+        console.log(err);
+    })
+},[])
+
   return (
     <div>
         <InputFormComponent getFinalQuery= {setUserChoices}/>
@@ -196,6 +247,13 @@ useEffect(()=>{
         <DisplayMap latitude={userChoices.latitude} longitude={userChoices.longitude} markerPopupInfo={markerData}/>
        
         :<>Try filling the form up</>
+        }
+        {
+        (!isHeroObjectReady)?
+            <></>
+            :<HeroStats heroData={heroInfo}/>
+            
+            
         }
     </div>
   )
