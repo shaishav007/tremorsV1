@@ -43,6 +43,15 @@
   margin: 0 auto;
 }
 
-.marker{
-  color:green;
+.markerGeology{
+  filter:invert(36%) sepia(100%) saturate(677%) hue-rotate(167deg) brightness(95%) contrast(86%);
+}
+.markerRich{
+  filter:invert(75%) sepia(61%) saturate(706%) hue-rotate(357deg) brightness(98%) contrast(107%);
+}
+.markerStrong{
+  filter:invert(25%) sepia(77%) saturate(5313%) hue-rotate(341deg) brightness(92%) contrast(108%);
+}
+.markerAll{
+  filter:invert(0%) sepia(83%) saturate(7500%) hue-rotate(210deg) brightness(115%) contrast(115%);
 }
