@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Routes,Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const FrontPage=()=> {
   return (
@@ -12,9 +12,7 @@ const FrontPage=()=> {
         <Link to="/about">
             <button>Meet the Makers!`</button>
         </Link>
-        
 
-        
     </div>
     
   )

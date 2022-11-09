@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import InputFormComponent from './InputFormComponent'
 import DisplayMap from './DisplayMap';
@@ -57,7 +57,7 @@ const MapPage = () => {
     }
 
     //this runs at the start. It gets all the data from the date we started this app to present date and writes it to firebase
-    useEffect(()=>{
+    const loadStuffInFirebase=()=>{
         //get the present data so that we can get the present data
         const presentDateObject = new Date()
         const presentDate = `${presentDateObject.getFullYear()}-${presentDateObject.getMonth()+1}-${presentDateObject.getDate()}`;
@@ -78,7 +78,7 @@ const MapPage = () => {
             console.log(err);
         })
         
-    },[writeToFirebase])
+    }
 
 
 
@@ -145,6 +145,7 @@ const MapPage = () => {
     const setDataToDisplay=(lat,long,resultData)=>{
         //this function only sets the right data in the right place
         console.log('this goes into feed,state should change',resultData)
+        loadStuffInFirebase();
         setLatitude(lat);
         setLongitude(long);
         generateMarkerInfo(resultData);
