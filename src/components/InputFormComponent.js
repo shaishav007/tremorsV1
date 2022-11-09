@@ -13,9 +13,8 @@ const InputFormComponent = (props) => {
     const [maxState,setMax]=useState(10);
     const [startDateState,setStartDate] = useState("2021-11-03");
     const [endDateState,setEndDate]= useState("2022-11-03")
-    const [isDataIn,setIsDataIn]=useState(false);
+    
 
-    const [responseData,setResponseData]=useState({});
     const placeRef = useRef('');
 
     const[last24hours,setlast24Hours]= useState(false)
@@ -62,10 +61,9 @@ const getPlaceQuery=(e)=>{
                     //IF YOU ARE GOING TO CHANGE STATES AND PASS DATA, PASS DATA FIRST, DON"T DEPEND ON STATES TO PASS THAT DATA. RESERVE STATE CHANGE ONLY FOR RENDERS NOTHING ELSE
                     props.coordsAndMarkerData(latitude,longitude,earthquakeResponse.data);
                     // setEverythingUp();
-                    setResponseData(earthquakeResponse.data)
+                  
                     
-                    //justCozData is in
-                    setIsDataIn(true);
+                    
                     //call this function once we get all the coords
                    
                 }
@@ -146,13 +144,13 @@ const getDateQuery=(e)=>{
             <label htmlFor='place'>Enter the location</label>
             <input type="text" name='place' onChange={getPlaceQuery} ref={placeRef} disabled={last24hours}/>
             <label htmlFor='minValue'>Min</label>
-            <input type="range" name='minValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours}/>
+            <input type="range" name='minValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours} value={minState}/>
             <label htmlFor='minValue'>Max </label>
-            <input type="range" name='maxValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours}/>
+            <input type="range" name='maxValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours} value={maxState}/>
             <label htmlFor='startDate'>Start Date </label>
-            <input type="date" name='startDate' onChange={getDateQuery} disabled={last24hours}/>
+            <input type="date" name='startDate' onChange={getDateQuery} disabled={last24hours} value={startDateState}/>
             <label htmlFor='endDate'>End Date </label>
-            <input type="date" name='endDate' onChange={getDateQuery} disabled={last24hours}/>
+            <input type="date" name='endDate' onChange={getDateQuery} disabled={last24hours} value={endDateState}/>
         
         
     </div>

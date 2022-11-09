@@ -4,11 +4,9 @@ import React, { useEffect, useState } from 'react'
 
 import InputFormComponent from './InputFormComponent'
 import DisplayMap from './DisplayMap';
-import MyComponent from  './DisplayMap'
 import HeroStats from './HeroStats';
 //this is importing from the npm install firebase thing
-import {get, getDatabase, push, ref, set} from 'firebase/database'
-
+import {getDatabase, ref, set} from 'firebase/database';
 //this one is importing our specific firebase settings
 import Firebase from './Firebase';
 
@@ -18,7 +16,7 @@ const MapPage = () => {
     //new states during refactor
     const [latitude,setLatitude] = useState(23.5);
     const [longitude,setLongitude] = useState(90);
-    const [resultData,setResultData] = useState([]);
+
     const [displayMapNow,setDisplayMapNow] = useState(false);
 
     //state to get data from the input form // an object which is just place, magnitude, ....
@@ -28,6 +26,35 @@ const MapPage = () => {
     const[heroInfo,setHeroInfo]= useState({})
     const[isHeroObjectReady,SetIsHeroObjectReady]=useState(false);
 
+
+    const writeToFirebase=(feed)=>{
+        feed.features.forEach((item)=>{
+            //for each entry in the earthquakes
+            let responder = 'geology teachers';
+            //if event magnitude is greater than 3.5 item.properties.mag
+            if(item.properties.mag>=3.5){
+                responder='Rich Mortal';
+                
+            }else if(item.properties.mag>6){
+                responder='Strong Good';
+            }else if(item.properties.mag>7){
+                responder='all';
+            }
+
+            //update the current entry
+            updateCurrentEntry(item,responder);
+        });
+
+        //now that it has the updated entry call firebase and set stuff straight
+        const database = getDatabase(Firebase);
+        const dbRef= ref(database);
+        //replaces whatever in the data right now with the currentEntry
+        set(dbRef,currentEntry);
+
+        //after we wrote stuff to firebase, now lets set Hero info
+        setHeroInfo(currentEntry);
+        SetIsHeroObjectReady(true);
+    }
 
     //this runs at the start. It gets all the data from the date we started this app to present date and writes it to firebase
     useEffect(()=>{
@@ -50,38 +77,12 @@ const MapPage = () => {
         }).catch((err)=>{
             console.log(err);
         })
-    },[])
+        
+    },[writeToFirebase])
 
 
 
-    const writeToFirebase=(feed)=>{
-            feed.features.forEach((item)=>{
-                //for each entry in the earthquakes
-                let responder = 'geology teachers';
-                //if event magnitude is greater than 3.5 item.properties.mag
-                if(item.properties.mag>=3.5){
-                    responder='Rich Mortal';
-                    
-                }else if(item.properties.mag>6){
-                    responder='Strong Good';
-                }else if(item.properties.mag>7){
-                    responder='all';
-                }
-
-                //update the current entry
-                updateCurrentEntry(item,responder);
-            });
-
-            //now that it has the updated entry call firebase and set stuff straight
-            const database = getDatabase(Firebase);
-            const dbRef= ref(database);
-            //replaces whatever in the data right now with the currentEntry
-            set(dbRef,currentEntry);
-
-            //after we wrote stuff to firebase, now lets set Hero info
-            setHeroInfo(currentEntry);
-            SetIsHeroObjectReady(true);
-    }
+ 
 
     //lets say the current entry in the database is
     let currentEntry={
@@ -146,7 +147,6 @@ const MapPage = () => {
         console.log('this goes into feed,state should change',resultData)
         setLatitude(lat);
         setLongitude(long);
-        setResultData(resultData);
         generateMarkerInfo(resultData);
         console.log('about to display map right now')
         setDisplayMapNow(true);
