@@ -1,7 +1,5 @@
 
 import './App.css';
-import axios from 'axios';
-import { useEffect } from 'react';
 import FrontPage from './components/FrontPage';
 import About from './components/About';
 import { Routes, Route } from 'react-router-dom';
