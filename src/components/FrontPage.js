@@ -1,7 +1,7 @@
 import React from 'react'
 import "../components/styles/FrontPage.css"
 
-import { Routes,Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const FrontPage=()=> {
   return (
@@ -19,6 +19,7 @@ const FrontPage=()=> {
         </div>
             
         </Link>
+
     </div>
     
   )
