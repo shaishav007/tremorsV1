@@ -1,0 +1,15 @@
+.aboutImageWrapper {
+  display: flex;
+
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+img {
+  width: 100%;
+}
+
+.aboutImage {
+  width: 250px;
+}

@@ -1,20 +1,24 @@
 import React from 'react'
+import "../components/styles/FrontPage.css"
 
 import { Routes,Route, Link } from 'react-router-dom'
 
 const FrontPage=()=> {
   return (
-    <div>
-        <h1> Tremors or ResCue</h1>
+    <div className="frontPage">
+        <h1> Tremors</h1>
+        <h2>The international earthquake database</h2>
         <Link to="/mapPage">
+          <div className='frontPageButtonOne'>
             <button>See who saved the day</button>
+          </div>  
         </Link>
         <Link to="/about">
+        <div className='frontPageButtontwo'> 
             <button>Meet the Makers!`</button>
+        </div>
+            
         </Link>
-        
-
-        
     </div>
     
   )
