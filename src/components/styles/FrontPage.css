@@ -16,6 +16,13 @@
 h1 {
   font-size: clamp(3.4375rem, 2.875rem + 2.8125vw, 6.25rem);
   font-weight: bolder;
+  margin: 0;
+  text-align: center;
+}
+
+h2{
+  width: clamp(320px,50vw,350px);
+  text-align: center;
 }
 
 a {
@@ -63,9 +70,11 @@ a {
 }
 
 .frontPageStar {
-  position: relative;
-  z-index: -5;
   height: 700px;
   width: 700px;
   filter: drop-shadow(30px 10px 4px #000000);
+  background: url(../Assets/Images/star.png);
+  background-repeat: no-repeat;
+  background-size: clamp(600px,45vw,700px);
+  background-position: center;
 }
