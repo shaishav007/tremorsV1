@@ -137,7 +137,7 @@ const getDateQuery=(e)=>{
     }
 
   return (
-    <div>
+    <div className='form'>
         
             <label htmlFor='last24hours'>Last 24 hours</label>
             <input type="checkbox" name='last24hours' onChange={handleLast24Hours}/>

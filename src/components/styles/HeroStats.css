@@ -1,0 +1,134 @@
+.heroStats{
+    width:300px;
+    border: 0.4rem solid #000;
+}
+
+.heroContainer{
+    display:flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.heroImageContainer{
+    width:12.5rem;
+    display:inline-block;
+    border: 0.4rem solid #000;
+    background-color: white;
+}
+
+.heroIncidents{
+    position:relative;
+    text-align:center;
+    font-size:20px;
+    background-color: #fecb00;
+    border: 0.4rem solid #000;
+    font-family: "Bangers", cursive;
+    padding:5px 5px;
+    margin:1rem auto;
+}
+
+.heroIncidents:before{
+    content:'';
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:1rem;
+    right:10%;
+    z-index: -1;
+    background-color:white;
+    border: 0.4rem solid #000;
+}
+
+.heroIncidents:after{
+    content:'';
+    position: absolute;
+    bottom:-10px;
+    left:50%;
+    width:0;
+    height:0;
+    border: 20px solid transparent;
+    border-top-color:white;
+    border-bottom: 0;
+    margin-left:20px;
+    margin-bottom:-20px;
+}
+
+.heroFooter{
+    margin:2rem auto 1rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1rem;
+    justify-items:center;
+}
+
+.left{
+    position: relative;
+    width:6.25rem;
+    height:calc(6.25rem / 1.618);
+    background-color: #1c80bc;
+    font-family: "Bangers", cursive;
+    font-size:20px;
+    border: 0.4rem solid #000;
+    cursor: pointer;
+}
+
+.left:before{
+    position: absolute;
+    z-index: -1;
+    content:'';
+    width:100%;
+    height:100%;
+    top:1rem;
+    right:20%;
+    background-color:white;
+    border: 0.4rem solid #000;
+}
+
+.right{
+    position: relative;
+    width:6.25rem;
+    height:calc(6.25rem / 1.618);
+    background-color: #f41532;
+    font-family: "Bangers", cursive;
+    font-size:20px;
+    border: 0.4rem solid #000;
+    cursor: pointer;
+}
+
+.right:before{
+    content:'';
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:1rem;
+    right:20%;
+    z-index: -1;
+    background-color:white;
+    border: 0.4rem solid #000;
+}
+
+.aboutLink{
+    grid-column: span 2;
+}
+
+.madeBy{
+    position:relative;
+    width:12.5rem;
+    height:calc(6.25rem / 1.618);
+    font-family: "Bangers", cursive;
+    border: 0.4rem solid #000;
+    background-color: #fecb00;
+    cursor: pointer;
+}
+
+.madeBy:before{
+    content:'';
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:1rem;
+    right:10%;
+    z-index: -1;
+    background-color:white;
+    border: 0.4rem solid #000;
+}

@@ -191,7 +191,7 @@ const MapPage = () => {
 
 
   return (
-    <div>
+    <div className='mapPage'>
         <InputFormComponent coordsAndMarkerData={setDataToDisplay}/>
         {/* if user has chosen then just put the fucking map on the table */}   {
         displayMapNow?
