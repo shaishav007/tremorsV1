@@ -1,9 +1,16 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .aboutImageWrapper {
   display: flex;
-
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+  height: 500px;
+  align-items: center;
 }
 
 img {
@@ -12,4 +19,41 @@ img {
 
 .aboutImage {
   width: 250px;
+  position: relative;
+}
+
+.aboutImageBackground {
+  height: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  z-index: 5;
+  position: absolute;
+  transition: 0.5s ease;
+  overflow: hidden;
+}
+.aboutImage:hover .aboutImageBackground {
+  height: 100%;
+}
+
+.aboutImageContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.aboutImageOne {
+  background-color: #fecb00;
+}
+
+.aboutImageTwo {
+  background-color: #f41532;
+}
+.aboutImageThree {
+  background-color: #1c80bc;
 }

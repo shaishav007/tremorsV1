@@ -9,14 +9,30 @@ const About = () => {
         Instructions
       </div>
       <div className='aboutImageWrapper'>
-        <figure className='aboutImage aboutImageOne'>
+        <figure className='aboutImage '>
           <img src={faceImage} alt=""/>
+          <div className='aboutImageBackground aboutImageOne'>
+            <div className='aboutImageContent'> Shishav</div>
+          </div>
         </figure>
-        <figure className='aboutImage aboutImageTwo'>
+        
+        <figure className='aboutImage '>
         <img src={faceImage} alt=""/> 
+        <div className='aboutImageBackground aboutImageTwo'>
+          <div className='aboutImageContent'> 
+        Dildeep
+        </div>
+        </div>
+        
         </figure>
-        <figure className='aboutImage aboutImageThree'>
-        <img src={faceImage} alt=""/>    
+        <figure className='aboutImage '>
+        <img src={faceImage} alt=""/>  
+        <div className='aboutImageBackground aboutImageThree'>
+          <div className='aboutImageContent'> 
+        Tristan
+        </div> 
+        </div>
+         
         </figure>
       </div>
 
