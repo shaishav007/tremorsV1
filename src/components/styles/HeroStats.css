@@ -1,0 +1,138 @@
+
+.heroStats{
+    border: 0.4rem solid #000;
+    width:clamp(18.75rem, 18rem + 3.75vw, 22.5rem);
+    max-width: 96%;
+    margin:0 auto;
+}
+
+.heroContainer{
+    display:flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.heroImageContainer{
+    width:clamp(12.5rem, 12.5rem + 0vw, 12.5rem);
+    display:inline-block;
+    border: 0.4rem solid #000;
+    background-color: white;
+}
+
+.heroIncidents{
+    position:relative;
+    text-align:center;
+    font-size:clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+    background-color: #fecb00;
+    border: 0.4rem solid #000;
+    font-family: "Bangers", cursive;
+    padding:5px 5px;
+    margin:1rem auto;
+}
+
+.heroIncidents:before{
+    content:'';
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:1rem;
+    right:7.5%;
+    z-index: -1;
+    background-color:white;
+    border: 0.4rem solid #000;
+}
+
+.heroIncidents:after{
+    content:'';
+    position: absolute;
+    bottom:-10px;
+    left:50%;
+    width:0;
+    height:0;
+    border: 20px solid transparent;
+    border-top-color:white;
+    border-bottom: 0;
+    margin-left:20px;
+    margin-bottom:-20px;
+}
+
+.heroFooter{
+    margin:2rem auto 1rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1rem;
+    justify-items:center;
+}
+
+.left{
+    position: relative;
+    width:clamp(6.25rem, 6.25rem + 0vw, 6.25rem);
+    height:calc(6.25rem / 1.618);
+    background-color: #1c80bc;
+    font-family: "Bangers", cursive;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+    border: 0.4rem solid #000;
+    cursor: pointer;
+}
+
+.left:before{
+    position: absolute;
+    z-index: -1;
+    content:'';
+    width:100%;
+    height:100%;
+    top:1rem;
+    right:20%;
+    background-color:white;
+    border: 0.4rem solid #000;
+}
+
+.right{
+    position: relative;
+    width:clamp(6.25rem, 6.25rem + 0vw, 6.25rem);
+    height:calc(6.25rem / 1.618);
+    background-color: #f41532;
+    font-family: "Bangers", cursive;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+    border: 0.4rem solid #000;
+    cursor: pointer;
+}
+
+.right:before{
+    content:'';
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:1rem;
+    right:20%;
+    z-index: -1;
+    background-color:white;
+    border: 0.4rem solid #000;
+}
+
+.aboutLink{
+    grid-column: span 2;
+}
+
+.madeBy{
+    position:relative;
+    width:clamp(12.5rem, 12.5rem + 0vw, 12.5rem);
+    height:calc(6.25rem / 1.618);
+    font-family: "Bangers", cursive;
+    border: 0.4rem solid #000;
+    background-color: #fecb00;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+    cursor: pointer;
+}
+
+.madeBy:before{
+    content:'';
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:1rem;
+    right:10%;
+    z-index: -1;
+    background-color:white;
+    border: 0.4rem solid #000;
+}
