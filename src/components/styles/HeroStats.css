@@ -1,6 +1,9 @@
+
 .heroStats{
-    width:300px;
     border: 0.4rem solid #000;
+    width:clamp(18.75rem, 18rem + 3.75vw, 22.5rem);
+    max-width: 96%;
+    margin:0 auto;
 }
 
 .heroContainer{
@@ -10,7 +13,7 @@
 }
 
 .heroImageContainer{
-    width:12.5rem;
+    width:clamp(12.5rem, 12.5rem + 0vw, 12.5rem);
     display:inline-block;
     border: 0.4rem solid #000;
     background-color: white;
@@ -19,7 +22,7 @@
 .heroIncidents{
     position:relative;
     text-align:center;
-    font-size:20px;
+    font-size:clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
     background-color: #fecb00;
     border: 0.4rem solid #000;
     font-family: "Bangers", cursive;
@@ -33,7 +36,7 @@
     height:100%;
     position:absolute;
     top:1rem;
-    right:10%;
+    right:7.5%;
     z-index: -1;
     background-color:white;
     border: 0.4rem solid #000;
@@ -63,11 +66,11 @@
 
 .left{
     position: relative;
-    width:6.25rem;
+    width:clamp(6.25rem, 6.25rem + 0vw, 6.25rem);
     height:calc(6.25rem / 1.618);
     background-color: #1c80bc;
     font-family: "Bangers", cursive;
-    font-size:20px;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
     border: 0.4rem solid #000;
     cursor: pointer;
 }
@@ -86,11 +89,11 @@
 
 .right{
     position: relative;
-    width:6.25rem;
+    width:clamp(6.25rem, 6.25rem + 0vw, 6.25rem);
     height:calc(6.25rem / 1.618);
     background-color: #f41532;
     font-family: "Bangers", cursive;
-    font-size:20px;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
     border: 0.4rem solid #000;
     cursor: pointer;
 }
@@ -113,11 +116,12 @@
 
 .madeBy{
     position:relative;
-    width:12.5rem;
+    width:clamp(12.5rem, 12.5rem + 0vw, 12.5rem);
     height:calc(6.25rem / 1.618);
     font-family: "Bangers", cursive;
     border: 0.4rem solid #000;
     background-color: #fecb00;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
     cursor: pointer;
 }
 

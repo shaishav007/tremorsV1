@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState} from 'react';
 import { Link } from 'react-router-dom';
+import Typewriter from 'typewriter-effect';
 import './styles/HeroStats.css'
 import strongGood from './Assets/Images/strongGood.jpg'
 
@@ -26,18 +27,22 @@ const HeroStats = (props) => {
     <div className='heroStats'>
         <div className='heroContainer'>
             <div className='heroImageContainer'>
-                <img src={strongGood}alt='silhouette of geology teachers or the hero sent to save us from the earthquaker'/>
+                <img src={strongGood}alt='silhouette of geology teachers or the hero sent to save us from the earthquake'/>
             </div>
             <div className="heroIncidents">
-                <p className='heroName' >{heros[index]} </p>
-                <p className='incidents'>incidents:{props.heroData[`${heros[index]}`].resolved}</p>
-                <p className='vacationsOwed'>vacations they are owed:{props.heroData[`${heros[index]}`].vacation}</p>
+                <Typewriter
+                    options={{
+                        strings: [`${heros[index]}`, `Present for ${props.heroData[`${heros[index]}`].resolved} incidents`, `Vacation time owed:${props.heroData[`${heros[index]}`].vacation} days`],
+                        autoStart: true,
+                        loop: true,
+                    }}
+                />
             </div>
         </div>
         <div className='heroFooter'>
             <button className='left' onClick={changeIndex} name='previous'>left</button>
             <button className='right'onClick={changeIndex} name='next'>Right</button>
-            <Link to='/about' class="aboutLink"><button className='madeBy'> Made by Dil, Tristan and Shaishav</button></Link>
+            <Link to='/about' className="aboutLink"><button className='madeBy'> Made by Dil, Tristan and Shaishav</button></Link>
         </div>
     </div>
   )

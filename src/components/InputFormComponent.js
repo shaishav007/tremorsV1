@@ -8,6 +8,8 @@ const InputFormComponent = (props) => {
 
     const[longitude,setLongitude]= useState(0);
 
+    const [ error, setError ] = useState(null);
+
     //lets add the states
     const [minState,setMin]=useState(0);
     const [maxState,setMax]=useState(10);
@@ -51,33 +53,23 @@ const getPlaceQuery=(e)=>{
                     maxmagnitude:maxState
                 }
             }).then((earthquakeResponse)=>{
-                console.log(earthquakeResponse.data);
+                // console.log(earthquakeResponse.data);
                 if(earthquakeResponse.data.metadata.count===0){
-                    console.log('no earthquakes for ',placeRef.current.value)
-                    props.coordsAndMarkerData(latitude,longitude,[]);
+                    props.coordsAndMarkerData(latitude,longitude,[])
+                    throw Error(`no earthquakes for ${placeRef.current.value}`);
                 }else{
-                    console.log( placeRef.current.value,' returned an earthquake lets see it',earthquakeResponse.data);
+                    // console.log( placeRef.current.value,' returned an earthquake lets see it',earthquakeResponse.data);
 
                     //IF YOU ARE GOING TO CHANGE STATES AND PASS DATA, PASS DATA FIRST, DON"T DEPEND ON STATES TO PASS THAT DATA. RESERVE STATE CHANGE ONLY FOR RENDERS NOTHING ELSE
                     props.coordsAndMarkerData(latitude,longitude,earthquakeResponse.data);
-                    // setEverythingUp();
-                  
-                    
-                    
-                    //call this function once we get all the coords
-                   
                 }
-            }).catch((err)=>{
-                console.log(err);
+            }).catch((error)=>{
+                setError(error.message);
             })
-            
-            
-
-        }).catch((err)=>{
-            console.log(err)
+        }).catch((errorLocation)=>{
+            console.log(errorLocation)
         })
     }
-    
 }
 
 const getRangeQuery=(e)=>{
@@ -88,7 +80,6 @@ const getRangeQuery=(e)=>{
     }else if(e.target.name==='maxValue'){
         setMax(e.target.value)
     }
-
 }
 
 const getDateQuery=(e)=>{
@@ -124,7 +115,7 @@ const getDateQuery=(e)=>{
                 }
             }).then((res)=>{
                 //this data means that the original map is here, we can send it to the marker info thing from here
-                console.log(res.data)
+                // console.log(`24 Hour Search Data`, res.data)
                 props.coordsAndMarkerData(latitude,longitude,res.data);
     
             }).catch((err)=>{
@@ -152,7 +143,7 @@ const getDateQuery=(e)=>{
             <label htmlFor='endDate'>End Date </label>
             <input type="date" name='endDate' onChange={getDateQuery} disabled={last24hours} value={endDateState}/>
         
-        
+            { error && <div><p className="errorMessage">{ error }</p></div> }
     </div>
   )
 }
