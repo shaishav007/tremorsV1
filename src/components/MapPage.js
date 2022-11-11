@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 
 import InputFormComponent from './InputFormComponent'
 import DisplayMap from './DisplayMap';
+import HeroStatsLoader from './HeroStatsLoader';
 import HeroStats from './HeroStats';
 //this is importing from the npm install firebase thing
 import {getDatabase, ref, set} from 'firebase/database';
@@ -200,8 +201,8 @@ const MapPage = () => {
         :<><p className="errorMessage">Try filling the form up</p></>
         }
         {
-        (!isHeroObjectReady)?
-            <></>
+        (!isHeroObjectReady)
+            ?<HeroStatsLoader />
             :<HeroStats heroData={heroInfo}/>
             
             
