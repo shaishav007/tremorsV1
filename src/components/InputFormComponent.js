@@ -104,9 +104,10 @@ const handleSubmit = (e) => {
 
     const handleLast24Hours=(e)=>{
         //if this is true, then just make the query here and send the data for map based on this query
-        
+
         setlast24Hours(!setlast24Hours);
         if (e.target.checked===false){
+           
             props.coordsAndMarkerData(latitude,longitude,[]);
         }else{
             const presentDateObject = new Date()
@@ -114,7 +115,7 @@ const handleSubmit = (e) => {
             
             
             const yesterday = `${presentDateObject.getFullYear()}-${presentDateObject.getMonth()+1}-${presentDateObject.getDate()-1}`;
-            
+           
             axios({
                 url:'https://earthquake.usgs.gov/fdsnws/event/1/query',
                 params:{
@@ -125,6 +126,7 @@ const handleSubmit = (e) => {
             }).then((res)=>{
                 //this data means that the original map is here, we can send it to the marker info thing from here
                 // console.log(`24 Hour Search Data`, res.data)
+                
                 props.coordsAndMarkerData(latitude,longitude,res.data);
     
             }).catch((err)=>{

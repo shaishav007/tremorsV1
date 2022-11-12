@@ -1,6 +1,6 @@
 import { MapContainer, TileLayer, Popup,useMap ,Marker} from 'react-leaflet';
 import L from 'leaflet';
-
+import "./styles/DisplayMap.css"
 import boomSvg from '../components/Assets/Images/boomSvg.svg'
 
 
@@ -37,7 +37,7 @@ const DisplayMap = (props) => {
     return (
         <div>
                 {/* Top container is considered immutable so a changeView or any other named object has to be below this as a child */}
-                <MapContainer center={[props.latitude,props.longitude]} zoom={50} scrollWheelZoom={false}> 
+                <MapContainer center={[props.latitude,props.longitude]} zoom={2} scrollWheelZoom={false}> 
                      {/* just made a component here and tried the setView function on this */}
                     <ChangeView center={[props.latitude,props.longitude]} zoom={2} scrollWheelZoom={false} />
                         <TileLayer
