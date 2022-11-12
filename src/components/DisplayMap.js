@@ -1,8 +1,8 @@
-
 import { MapContainer, TileLayer, Popup,useMap ,Marker} from 'react-leaflet';
 import L from 'leaflet';
+
 import boomSvg from '../components/Assets/Images/boomSvg.svg'
-import "./styles/DisplayMap.css"
+
 
 
 //this is exactly like any other component just defined inside the file instead of outside, THIS IS responsible for changing the center
@@ -33,7 +33,7 @@ const customIcon = (mag) => {
 
 const DisplayMap = (props) => {
     // console.log(props.markerPopupInfo[0].coords[1],props.markerPopupInfo[0].coords[0])
-    console.log('marker popup info',props.markerPopupInfo);
+    // console.log('marker popup info',props.markerPopupInfo);
     return (
         <div>
                 {/* Top container is considered immutable so a changeView or any other named object has to be below this as a child */}
@@ -53,6 +53,7 @@ const DisplayMap = (props) => {
                                 <Marker 
                                     position={[item.coords[1],item.coords[0]]} 
                                     icon={customIcon(item.popupInfo.magnitude)}
+                                    key={item.id}
                                     >
                                     <Popup>
                                     Magnitude:{item.popupInfo.magnitude}, <br/>

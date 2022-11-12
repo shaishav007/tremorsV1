@@ -1,0 +1,59 @@
+.heroStatsLoader{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    border: 0.4rem solid #000;
+    width:clamp(18.75rem, 18rem + 3.75vw, 22.5rem);
+    max-width: 96%;
+    margin:0 auto;
+}
+
+.loadingH3{
+    position:relative;
+    text-align:center;
+    font-size: clamp(1.5rem, 1.35rem + 0.75vw, 2.25rem);
+    font-family: "Bangers", cursive;
+    border: 0.4rem solid #000;
+    margin:1rem auto;
+    background-color: #fecb00;
+    padding:5px 5px;
+}
+
+.loadingH3:before{
+    content:'';
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:1rem;
+    right:7.5%;
+    z-index: -1;
+    background-color:white;
+    border: 0.4rem solid #000;
+}
+
+.loadingSpinner{
+    margin:4rem auto;
+}
+
+.loadingP{
+    position: relative;
+    background-color: #1c80bc;
+    font-family: "Bangers", cursive;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+    border: 0.4rem solid #000;
+    cursor: pointer;
+    padding: 10px 10px;
+    margin-bottom:2rem;
+}
+
+.loadingP:before{
+    position: absolute;
+    z-index: -1;
+    content:'';
+    width:100%;
+    height:100%;
+    top:1rem;
+    right:10%;
+    background-color:white;
+    border: 0.4rem solid #000;
+}
