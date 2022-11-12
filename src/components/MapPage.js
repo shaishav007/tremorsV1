@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 
 import InputFormComponent from './InputFormComponent'
 import DisplayMap from './DisplayMap';
+import HeroStatsLoader from './HeroStatsLoader';
 import HeroStats from './HeroStats';
 //this is importing from the npm install firebase thing
 import {getDatabase, ref, set} from 'firebase/database';
@@ -61,7 +62,7 @@ const MapPage = () => {
         //get the present data so that we can get the present data
         const presentDateObject = new Date()
         const presentDate = `${presentDateObject.getFullYear()}-${presentDateObject.getMonth()+1}-${presentDateObject.getDate()}`;
-        console.log(presentDate);
+        // console.log(presentDate);
         axios({
             url:'https://earthquake.usgs.gov/fdsnws/event/1/query',
             params:{
@@ -70,7 +71,7 @@ const MapPage = () => {
                 endtime:presentDate,
             }
         }).then((res)=>{
-            console.log(res.data);
+            // console.log(`WriteToFirebase`,res.data);
             //write this to firebase
             writeToFirebase(res.data);
 
@@ -144,12 +145,12 @@ const MapPage = () => {
     //this one is where the result of the query gets in and we get to decide what gets displayed on the map
     const setDataToDisplay=(lat,long,resultData)=>{
         //this function only sets the right data in the right place
-        console.log('this goes into feed,state should change',resultData)
+        // console.log('this goes into feed,state should change',resultData)
         loadStuffInFirebase();
         setLatitude(lat);
         setLongitude(long);
         generateMarkerInfo(resultData);
-        console.log('about to display map right now')
+        // console.log('about to display map right now')
         setDisplayMapNow(true);
     }
 
@@ -172,10 +173,10 @@ const MapPage = () => {
                 }else if(item.properties.mag>7){
                     responder='all';
                 }
-
                 //we are adding 1 marker for each incident
                 markerInfo.push({
                     coords:item.geometry.coordinates,
+                    id:item.id,
                     popupInfo:{
                             place:item.properties.place,
                             magnitude:item.properties.mag,
@@ -191,17 +192,17 @@ const MapPage = () => {
 
 
   return (
-    <div>
+    <div className='mapPage'>
         <InputFormComponent coordsAndMarkerData={setDataToDisplay}/>
         {/* if user has chosen then just put the fucking map on the table */}   {
         displayMapNow?
         <DisplayMap latitude={latitude} longitude={longitude} markerPopupInfo={markerData}/>
        
-        :<>Try filling the form up</>
+        :<><p className="errorMessage">Try filling the form up</p></>
         }
         {
-        (!isHeroObjectReady)?
-            <></>
+        (!isHeroObjectReady)
+            ?<HeroStatsLoader />
             :<HeroStats heroData={heroInfo}/>
             
             

@@ -1,5 +1,10 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState} from 'react';
+import { Link } from 'react-router-dom';
+import Typewriter from 'typewriter-effect';
+import './styles/HeroStats.css'
+import richMortal from './Assets/Images/richMortal.jpg'
+
 const HeroStats = (props) => {
     const [index,setIndex]=useState(0);
     const heros=['geology teachers','Rich Mortal','Strong Good']
@@ -19,21 +24,26 @@ const HeroStats = (props) => {
         setIndex(updatedIndex%3);
     }
   return (
-    <div>
+    <div className='heroStats'>
         <div className='heroContainer'>
-        <div className='heroImageContainer'>
-            <img alt='subzero wins'/>
-        </div>
-        <p className='heroName' >{heros[index]} </p>
-        <p className='incidents'>incidents:{props.heroData[`${heros[index]}`].resolved}</p>
-        <p className='vacationsOwed'>vacations they are owed:{props.heroData[`${heros[index]}`].vacation}</p>
+            <div className='heroImageContainer'>
+                <img src={richMortal}alt='silhouette of geology teachers or the hero sent to save us from the earthquake'/>
+            </div>
+            <div className="heroIncidents">
+                <Typewriter
+                    options={{
+                        strings: [`${heros[index]}`, `Present for ${props.heroData[`${heros[index]}`].resolved} incidents`, `Vacation time owed:${props.heroData[`${heros[index]}`].vacation} days`],
+                        autoStart: true,
+                        loop: true,
+                    }}
+                />
+            </div>
         </div>
         <div className='heroFooter'>
             <button className='left' onClick={changeIndex} name='previous'>left</button>
-            <button className='madeBy'> Made by Dil, Tristan and Shaishav</button>
             <button className='right'onClick={changeIndex} name='next'>Right</button>
+            <Link to='/about' className="aboutLink"><button className='madeBy'> Made by Dil, Tristan and Shaishav</button></Link>
         </div>
-
     </div>
   )
 }
