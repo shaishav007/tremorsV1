@@ -10,6 +10,7 @@ import HeroStats from './HeroStats';
 import {getDatabase, ref, set} from 'firebase/database';
 //this one is importing our specific firebase settings
 import Firebase from './Firebase';
+import './styles/MapPage.css'
 
 
 const MapPage = () => {
@@ -192,21 +193,25 @@ const MapPage = () => {
 
 
   return (
-    <div className='mapPage'>
+    <div className='mapPage wrapper'>
+        <h2 className='mapPageH2'>Tremors</h2>
         <InputFormComponent coordsAndMarkerData={setDataToDisplay}/>
-        {/* if user has chosen then just put the fucking map on the table */}   {
-        displayMapNow?
-        <DisplayMap latitude={latitude} longitude={longitude} markerPopupInfo={markerData}/>
-       
-        :<><p className="errorMessage">Try filling the form up</p></>
-        }
-        {
-        (!isHeroObjectReady)
-            ?<HeroStatsLoader />
-            :<HeroStats heroData={heroInfo}/>
-            
-            
-        }
+        <div className='outputContainer'>
+            <div className="containerForMap">
+                {
+                displayMapNow
+                ?<DisplayMap latitude={latitude} longitude={longitude} markerPopupInfo={markerData}/>
+                :<p className="errorMessage">Try filling the form up</p>
+                }
+            </div>
+            <div className="containerForStats">
+                {
+                !isHeroObjectReady
+                    ?<HeroStatsLoader />
+                    :<HeroStats heroData={heroInfo}/>
+                }
+            </div>
+        </div>    
     </div>
   )
 }
