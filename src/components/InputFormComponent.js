@@ -57,7 +57,7 @@ const getPlaceQuery=(e)=>{
                     maxmagnitude:maxState
                 }
             }).then((earthquakeResponse)=>{
-                // console.log(earthquakeResponse.data);
+                console.log(earthquakeResponse.data);
                 if(earthquakeResponse.data.metadata.count===0){
                     props.coordsAndMarkerData(latitude,longitude,[])
                     throw Error(`no earthquakes for ${placeRef.current.value}`);
