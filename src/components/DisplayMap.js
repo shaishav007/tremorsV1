@@ -1,7 +1,7 @@
 
 import { MapContainer, TileLayer, Popup,useMap ,Marker} from 'react-leaflet';
 import L from 'leaflet';
-import boomSvg from './Assets/boomSvg.svg'
+import boomSvg from '../components/Assets/Images/boomSvg.svg'
 import "./styles/DisplayMap.css"
 
 

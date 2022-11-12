@@ -1,7 +1,7 @@
 import React from 'react'
 import "../components/styles/About.css"
 import faceImage from "../components/Assets/Images/random.jpg"
-import { Link } from 'react-router-dom'
+
 
 const About = () => {
   return (
