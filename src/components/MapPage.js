@@ -158,6 +158,7 @@ const MapPage = () => {
 
     //we will need to pass on the data to this function at some point -THIS ONE
     const generateMarkerInfo=(feed)=>{
+   
         let markerInfo = [];
         //booleans and arrays refuse to work with each other in js. DO NOT EVER USE BOOLEANS WITH ARRAYS AGAIN
         if(feed.length!==0){
@@ -187,7 +188,7 @@ const MapPage = () => {
             });
         }
         //update the state now to have marker data
-
+       
         setMarkerData(markerInfo);
     }
 
