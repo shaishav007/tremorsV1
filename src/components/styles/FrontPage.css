@@ -20,8 +20,8 @@ h1 {
   text-align: center;
 }
 
-h2{
-  width: clamp(320px,50vw,350px);
+h2 {
+  width: clamp(320px, 50vw, 350px);
   text-align: center;
 }
 
@@ -47,7 +47,7 @@ a {
   content: "";
   position: absolute;
   left: -15px;
-  top: 0.15rem;
+  top: 1rem;
   width: 100%;
   height: 100%;
   background-color: white;
@@ -75,6 +75,6 @@ a {
   filter: drop-shadow(30px 10px 4px #000000);
   background: url(../Assets/Images/star.png);
   background-repeat: no-repeat;
-  background-size: clamp(600px,45vw,700px);
+  background-size: clamp(600px, 45vw, 700px);
   background-position: center;
 }

@@ -1,7 +1,8 @@
 import { MapContainer, TileLayer, Popup,useMap ,Marker} from 'react-leaflet';
 import L from 'leaflet';
-import "./styles/DisplayMap.css"
-import boomSvg from './Assets/Images/boomSvg.svg';
+
+import boomSvg from '../components/Assets/Images/boomSvg.svg'
+
 
 
 //this is exactly like any other component just defined inside the file instead of outside, THIS IS responsible for changing the center

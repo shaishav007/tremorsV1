@@ -2,17 +2,21 @@ import React from 'react'
 import "../components/styles/About.css"
 import faceImage from "../components/Assets/Images/random.jpg"
 
+
 const About = () => {
   return (
     <div className='about'>
-      <div className='aboutInstructions'>
-        Instructions
-      </div>
+      <h1 className='aboutUs'>
+        about us
+      </h1>
       <div className='aboutImageWrapper'>
         <figure className='aboutImage '>
           <img src={faceImage} alt=""/>
           <div className='aboutImageBackground aboutImageOne'>
-            <div className='aboutImageContent'> Shishav</div>
+            <div className='aboutImageContent'> 
+            <p>Shaishav Vashi</p>
+              <p>Shaishav.ca</p>
+            </div>
           </div>
         </figure>
         
@@ -20,7 +24,8 @@ const About = () => {
         <img src={faceImage} alt=""/> 
         <div className='aboutImageBackground aboutImageTwo'>
           <div className='aboutImageContent'> 
-        Dildeep
+          <p>Dildeep Gill</p>
+            <p>Dildeepgill.com</p>
         </div>
         </div>
         
@@ -29,12 +34,22 @@ const About = () => {
         <img src={faceImage} alt=""/>  
         <div className='aboutImageBackground aboutImageThree'>
           <div className='aboutImageContent'> 
-        Tristan
+          <p>Tristan Thorburn</p>
+            <p>Tristanthorburn.com</p>
         </div> 
         </div>
-         
         </figure>
+        
       </div>
+      <div className='aboutProject'>
+          <h3 className='aboutProjectHeader'>About Our Project</h3>
+          <p className='aboutProjectPara'>Tremors: Earth Detection App
+            Developed a front-end web app using React Leaflet and USGS APIs to plot
+            earthquakes on a vector map, assign heroes, and log vacation days to Firebase.
+            Technologies utilized: HTML | CSS | JavaScript | React (Hooks & Routing) | Firebase | APIs
+            </p>
+
+        </div>
 
     </div>  
   )

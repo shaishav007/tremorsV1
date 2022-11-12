@@ -1,7 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.about {
+  height: 100vh;
 }
 
 .aboutImageWrapper {
@@ -9,25 +15,45 @@
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  height: 500px;
+  min-height: 300px;
   align-items: center;
 }
-
+.aboutProject {
+  text-align: center;
+  max-width: 550px;
+  margin: 0 auto;
+}
 img {
   width: 100%;
 }
+figure {
+  margin: 0;
+}
 
+.aboutUs {
+  text-transform: uppercase;
+  font-family: "Bangers", cursive;
+  color: black;
+  padding: 10px;
+  width: 450px;
+  margin: 0 auto;
+  border-bottom: #fecb00 5px solid;
+}
 .aboutImage {
   width: 250px;
   position: relative;
 }
-
+.aboutImage img {
+  border: 2px solid black;
+}
 .aboutImageBackground {
+  border: 2px solid black;
+  border-bottom: none;
   height: 0;
   width: 100%;
   left: 0;
   right: 0;
-  bottom: 4px;
+  bottom: 3px;
   z-index: 5;
   position: absolute;
   transition: 0.5s ease;
@@ -38,6 +64,7 @@ img {
 }
 
 .aboutImageContent {
+  text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -45,6 +72,7 @@ img {
   color: black;
   white-space: nowrap;
   overflow: hidden;
+  font-weight: 500;
 }
 
 .aboutImageOne {
@@ -56,4 +84,23 @@ img {
 }
 .aboutImageThree {
   background-color: #1c80bc;
+}
+
+.aboutProjectHeader {
+  background: url(../Assets/Images/star.png);
+  background-repeat: no-repeat;
+  background-size: clamp(80px, 45vw, 50px);
+  background-position: center;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.aboutProjectPara {
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 400;
 }
