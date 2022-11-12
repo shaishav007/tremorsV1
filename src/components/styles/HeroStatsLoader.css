@@ -8,6 +8,13 @@
     margin:0 auto;
 }
 
+.loadingWrapper{
+    margin:0.5rem 2rem;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .loadingH3{
     position:relative;
     text-align:center;
@@ -32,7 +39,7 @@
 }
 
 .loadingSpinner{
-    margin:4rem auto;
+    margin:5rem auto;
 }
 
 .loadingP{
@@ -52,8 +59,8 @@
     content:'';
     width:100%;
     height:100%;
-    top:1rem;
-    right:10%;
+    top:1.1rem;
+    right:7.5%;
     background-color:white;
     border: 0.4rem solid #000;
 }

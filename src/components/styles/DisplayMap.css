@@ -1,7 +1,7 @@
 
 .leaflet-container {
-    height: 500px;
-    width: 1000px;
+    height:clamp(30.625rem, 30.625rem + 0vw, 30.625rem);
+    width:clamp(20rem, 11.5rem + 42.5vw, 62.5rem);
     margin: 0 auto;
   }
   
@@ -18,11 +18,5 @@
     filter:invert(0%) sepia(83%) saturate(7500%) hue-rotate(210deg) brightness(115%) contrast(115%);
   }
   
-  html {
-    /* background-image: url("./components/Assets/Images/background.webp");
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh; */
-    background-color: rgb(28, 40, 128);
-  }
+
   

@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios';
 import { useState,useRef } from 'react';
+import './styles/InputFormComponent.css';
+
 const InputFormComponent = (props) => {
 
     //new states
@@ -93,6 +95,10 @@ const getDateQuery=(e)=>{
     }
 }
 
+const handleSubmit = (e) => {
+    e.preventDefault();
+}
+
 //after all these we need to just add stuff to the array so that we can pass the values to the parent
 
 
@@ -131,22 +137,34 @@ const getDateQuery=(e)=>{
     }
 
   return (
-    <div className='form'>
-        
-            <label htmlFor='last24hours'>Last 24 hours</label>
-            <input type="checkbox" name='last24hours' onChange={handleLast24Hours}/>
-            <label htmlFor='place'>Enter the location</label>
-            <input type="text" name='place' onChange={getPlaceQuery} ref={placeRef} disabled={last24hours}/>
-            <label htmlFor='minValue'>Min</label>
-            <input type="range" name='minValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours} value={minState}/>
-            <label htmlFor='minValue'>Max </label>
-            <input type="range" name='maxValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours} value={maxState}/>
-            <label htmlFor='startDate'>Start Date </label>
-            <input type="date" name='startDate' onChange={getDateQuery} disabled={last24hours} value={startDateState}/>
-            <label htmlFor='endDate'>End Date </label>
-            <input type="date" name='endDate' onChange={getDateQuery} disabled={last24hours} value={endDateState}/>
-        
-            { error && <div><p className="errorMessage">{ error }</p></div> }
+    <div className='formContainer'>
+        <form onSubmit={handleSubmit}>
+            <div className="queryContainer">
+                <label className='queryLabel' htmlFor='24hours'>Last 24 hours </label>
+                <input type="checkbox" name='24hours' onChange={handleLast24Hours}/>
+            </div>
+            <div className="queryContainer">
+                <label htmlFor='place' className='queryLabel'>Enter the location</label>
+                <input type="text" name='place' onChange={getPlaceQuery} ref={placeRef} disabled={last24hours}/>
+            </div>
+            <div className="queryContainer">
+                <label htmlFor='minValue' className='queryLabel'>Min Magnitude</label>
+                <input type="range" name='minValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours} value={minState} className='magSlider'/>
+            </div>
+            <div className="queryContainer">
+                <label htmlFor='minValue' className='queryLabel'>Max Magnitude</label>
+                <input type="range" name='maxValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours} value={maxState} className='magSlider'/>
+            </div>
+            <div className="queryContainer">
+                <label htmlFor='startDate' className='queryLabel'>Start Date </label>
+                <input type="date" name='startDate' onChange={getDateQuery} disabled={last24hours} value={startDateState}/>
+            </div>
+            <div className="queryContainer">
+                <label htmlFor='endDate' className='queryLabel'>End Date </label>
+                <input type="date" name='endDate' onChange={getDateQuery} disabled={last24hours} value={endDateState}/>
+            </div>
+        </form>
+            { error && <div><p className="errorMessage formError">{ error }</p></div> }
     </div>
   )
 }
