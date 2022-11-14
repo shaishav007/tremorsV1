@@ -1,10 +1,11 @@
 import React from 'react'
 import "../components/styles/About.css"
 import faceImage from "../components/Assets/Images/random.jpg"
+import Footer from './Footer'
 
 
 const About = () => {
-  return (
+  return (<>
     <div className='about'>
       <h1 className='aboutUs'>
         about us
@@ -43,7 +44,7 @@ const About = () => {
       </div>
       <div className='aboutProject'>
           <h3 className='aboutProjectHeader'>About Our Project</h3>
-          <p className='aboutProjectPara'>Tremors: Earth Detection App
+          <p className='aboutProjectPara'>Tremors: Earthquake Detection App
             Developed a front-end web app using React Leaflet and USGS APIs to plot
             earthquakes on a vector map, assign heroes, and log vacation days to Firebase.
             Technologies utilized: HTML | CSS | JavaScript | React (Hooks & Routing) | Firebase | APIs
@@ -52,6 +53,10 @@ const About = () => {
         </div>
 
     </div>  
+    <Footer/>
+
+    </>
+  
   )
 }
 
