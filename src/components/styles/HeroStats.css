@@ -28,6 +28,7 @@
     font-family: "Bangers", cursive;
     padding:5px 5px;
     margin:0.5rem auto;
+    width:250px;
 }
 
 .heroIncidents:before{
@@ -53,7 +54,7 @@
     border-top-color:white;
     border-bottom: 0;
     margin-left:20px;
-    margin-bottom:-20px;
+    margin-bottom:-18px;
 }
 
 .heroFooter{
