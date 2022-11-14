@@ -2,21 +2,33 @@ import React from 'react'
 import "../components/styles/About.css"
 import faceImage from "../components/Assets/Images/random.jpg"
 import Footer from './Footer'
+import arrow from "../components/Assets/Images/arrow.png"
+import { Link } from 'react-router-dom'
 
 
 const About = () => {
   return (<>
     <div className='about'>
-      <h1 className='aboutUs'>
-        about us
-      </h1>
+      <div className='aboutH1Logo'>
+        <Link exact to="/">
+        <figure className='aboutLogo'>
+          <img src={arrow} alt="arrow to home"></img>
+        </figure>
+        </Link>
+        <h1 className='aboutUs'>
+          about us
+        </h1>
+      </div>
       <div className='aboutImageWrapper'>
         <figure className='aboutImage '>
           <img src={faceImage} alt=""/>
           <div className='aboutImageBackground aboutImageOne'>
             <div className='aboutImageContent'> 
-            <p>Shaishav Vashi</p>
-              <p>Shaishav.ca</p>
+            <p><a href="https://Shaishav.ca" target="_blank" rel="noreferrer"> Shaishav Vashi</a></p>
+            <p><a href="https://www.linkedin.com/in/shaishavvashi/" target="_blank" rel="noreferrer"> Linkedin</a></p>
+            <p><a href="https://github.com/shaishav007" target="_blank" rel="noreferrer"> Github</a></p>
+            
+            
             </div>
           </div>
         </figure>
@@ -25,8 +37,13 @@ const About = () => {
         <img src={faceImage} alt=""/> 
         <div className='aboutImageBackground aboutImageTwo'>
           <div className='aboutImageContent'> 
-          <p>Dildeep Gill</p>
-            <p>Dildeepgill.com</p>
+          <p>
+            <a href="https://dildeepgill.com" target="_blank" rel="noreferrer"> Dildeep Gill</a>
+          </p>  
+          <p><a href="https://www.linkedin.com/in/dildeep-gill-74436214a/" target="_blank" rel="noreferrer"> Linkedin</a></p>
+          <p><a href="https://github.com/dildeepgill" target="_blank" rel="noreferrer"> Github</a></p>
+          
+
         </div>
         </div>
         
@@ -35,8 +52,9 @@ const About = () => {
         <img src={faceImage} alt=""/>  
         <div className='aboutImageBackground aboutImageThree'>
           <div className='aboutImageContent'> 
-          <p>Tristan Thorburn</p>
-            <p>Tristanthorburn.com</p>
+          <p><a href="https://Tristanthorburn.com" target="_blank" rel="noreferrer">Tristan Thorburn</a></p>
+          <p><a href="https://www.linkedin.com/in/tristanthorburn/" target="_blank" rel="noreferrer"> Linkedin</a></p>
+          <p><a href="https://github.com/TristanThorburn" target="_blank" rel="noreferrer"> Github</a></p>
         </div> 
         </div>
         </figure>
@@ -49,7 +67,6 @@ const About = () => {
             earthquakes on a vector map, assign heroes, and log vacation days to Firebase.
             Technologies utilized: HTML | CSS | JavaScript | React (Hooks & Routing) | Firebase | APIs
             </p>
-
         </div>
 
     </div>  
