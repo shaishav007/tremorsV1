@@ -1,11 +1,11 @@
 import React from 'react'
 import "./styles/Legend.css"
 
-const Legend = () => {
+const Legend = (props) => {
   return (
     <div className='legend'>
         <h3>Legend</h3>
-        <p> 200 earthquakes found</p>
+        <p> {props.earthquakesFound} earthquakes found</p>
         <ul className='legendUl'>
             <li>Magnitude</li>
             <li>
