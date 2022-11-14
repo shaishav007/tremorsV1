@@ -4,6 +4,7 @@
     align-items: center;
     border: 0.4rem solid #000;
     width:clamp(18.75rem, 18rem + 3.75vw, 22.5rem);
+    height:clamp(31.5rem, 31.25rem + 0vw, 31.5rem);
     max-width: 96%;
     margin:0 auto;
 }

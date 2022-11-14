@@ -14,8 +14,8 @@
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top:4rem;
-    gap:4rem;
+    margin-top:2rem;
+    gap:0rem;
 }
 
 .containerForMap{
@@ -34,7 +34,7 @@
     height:clamp(5rem, 5rem + 0vw, 5rem);
     background-color: #f41532;
     font-family: "Bangers", cursive;
-    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+    font-size: clamp(1.25rem, 1.2rem + 0.25vw, 1.5rem);
     border: 0.4rem solid #000;
     cursor: pointer;
     padding:10px 10px;
@@ -60,7 +60,7 @@
     background-color: #fecb00;
     border: 0.4rem solid #000;
     font-family: "Bangers", cursive;
-    padding:5px 5px;
+    padding:5px 0px;
     margin:2rem auto;
 }
 
@@ -74,4 +74,11 @@
     z-index: -1;
     background-color:white;
     border: 0.4rem solid #000;
+}
+
+@media (min-width:1079px){
+    .outputContainer{
+        flex-wrap: nowrap;
+        gap:2rem;
+    }
 }

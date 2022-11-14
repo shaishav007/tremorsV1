@@ -100,8 +100,6 @@ const handleSubmit = (e) => {
 }
 
 //after all these we need to just add stuff to the array so that we can pass the values to the parent
-
-
     const handleLast24Hours=(e)=>{
         //if this is true, then just make the query here and send the data for map based on this query
 
@@ -112,7 +110,6 @@ const handleSubmit = (e) => {
         }else{
             const presentDateObject = new Date()
             const presentDate = `${presentDateObject.getFullYear()}-${presentDateObject.getMonth()+1}-${presentDateObject.getDate()}`;
-            
             
             const yesterday = `${presentDateObject.getFullYear()}-${presentDateObject.getMonth()+1}-${presentDateObject.getDate()-1}`;
            
@@ -133,37 +130,36 @@ const handleSubmit = (e) => {
                 console.log(err);
             })
         }
-        
-        
-       
     }
 
   return (
     <div className='formContainer'>
+        <div className='queryContainer lastTwentyFour'>
+                <label className='queryLabel checkboxContainer' htmlFor='lastTwentyFour'>Last 24 hours? 
+                    <input type="checkbox" name='lastTwentyFour' onChange={handleLast24Hours}/>
+                    <span className="checkmark"></span>
+                </label>
+        </div>
         <form onSubmit={handleSubmit}>
             <div className="queryContainer">
-                <label className='queryLabel' htmlFor='24hours'>Last 24 hours </label>
-                <input type="checkbox" name='24hours' onChange={handleLast24Hours}/>
+                <label htmlFor='place' className='queryLabel placeQuery'>Enter the location:</label>
+                <input type="text" name='place' onChange={getPlaceQuery} ref={placeRef} disabled={last24hours} className='placeInput'/>
             </div>
             <div className="queryContainer">
-                <label htmlFor='place' className='queryLabel'>Enter the location</label>
-                <input type="text" name='place' onChange={getPlaceQuery} ref={placeRef} disabled={last24hours}/>
-            </div>
-            <div className="queryContainer">
-                <label htmlFor='minValue' className='queryLabel'>Min Magnitude</label>
+                <label htmlFor='minValue' className='queryLabel magLabel'>Min Magnitude: {minState}</label>
                 <input type="range" name='minValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours} value={minState} className='magSlider'/>
             </div>
             <div className="queryContainer">
-                <label htmlFor='minValue' className='queryLabel'>Max Magnitude</label>
+                <label htmlFor='minValue' className='queryLabel magLabel'>Max Magnitude: {maxState}</label>
                 <input type="range" name='maxValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours} value={maxState} className='magSlider'/>
             </div>
             <div className="queryContainer">
-                <label htmlFor='startDate' className='queryLabel'>Start Date </label>
-                <input type="date" name='startDate' onChange={getDateQuery} disabled={last24hours} value={startDateState}/>
+                <label htmlFor='startDate' className='queryLabel dateLabel'>Start Date </label>
+                <input type="date" name='startDate' onChange={getDateQuery} disabled={last24hours} value={startDateState} className='dateInput'/>
             </div>
             <div className="queryContainer">
-                <label htmlFor='endDate' className='queryLabel'>End Date </label>
-                <input type="date" name='endDate' onChange={getDateQuery} disabled={last24hours} value={endDateState}/>
+                <label htmlFor='endDate' className='queryLabel dateLabel'>End Date </label>
+                <input type="date" name='endDate' onChange={getDateQuery} disabled={last24hours} value={endDateState} className='dateInput'/>
             </div>
         </form>
             { error && <div><p className="errorMessage formError">{ error }</p></div> }

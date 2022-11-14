@@ -2,6 +2,7 @@
 .heroStats{
     border: 0.4rem solid #000;
     width:clamp(18.75rem, 18rem + 3.75vw, 22.5rem);
+    height:clamp(31.5rem, 31.25rem + 0vw, 31.5rem);
     max-width: 96%;
     margin:0 auto;
 }
@@ -28,6 +29,7 @@
     font-family: "Bangers", cursive;
     padding:5px 5px;
     margin:0.5rem auto;
+    width:250px;
 }
 
 .heroIncidents:before{
@@ -53,11 +55,11 @@
     border-top-color:white;
     border-bottom: 0;
     margin-left:20px;
-    margin-bottom:-20px;
+    margin-bottom:-18px;
 }
 
 .heroFooter{
-    margin:2rem auto 1rem;
+    margin:1rem auto;
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:1rem;
