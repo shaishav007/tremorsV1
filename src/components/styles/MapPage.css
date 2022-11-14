@@ -34,7 +34,7 @@
     height:clamp(5rem, 5rem + 0vw, 5rem);
     background-color: #f41532;
     font-family: "Bangers", cursive;
-    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+    font-size: clamp(1.25rem, 1.2rem + 0.25vw, 1.5rem);
     border: 0.4rem solid #000;
     cursor: pointer;
     padding:10px 10px;

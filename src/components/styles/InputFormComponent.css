@@ -1,8 +1,8 @@
 .formContainer{
     display:flex;
     flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    gap:2rem;
 }
 
 form{
@@ -10,12 +10,19 @@ form{
     justify-content: center;
     flex-wrap: wrap;
     gap:2rem;
+    border: 0.4rem solid #000;
+    padding:1rem 1rem;
+    
 }
 
 input, label{
     font-family: "Bangers", cursive;
     text-align: center;
-    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+    font-size: clamp(1.5rem, 1.425rem + 0.375vw, 1.875rem);
+}
+
+input{
+    cursor: pointer;
 }
 
 .queryContainer{
@@ -29,9 +36,8 @@ input, label{
     position: relative;
     background-color: #1c80bc;
     font-family: "Bangers", cursive;
-    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+    font-size: clamp(1.25rem, 1.2rem + 0.25vw, 1.5rem);
     border: 0.4rem solid #000;
-    cursor: pointer;
     padding:5px 5px;
     max-width:200px;
 }
@@ -43,11 +49,130 @@ input, label{
     width:100%;
     height:100%;
     top:1rem;
-    right:20%;
     background-color:white;
     border: 0.4rem solid #000;
 }
 
+.lastTwentyFour{
+    border: 0.4rem solid #000;
+    width:15rem;
+    height:11.5rem;
+    margin:0 auto;
+}
+
+.checkboxContainer{
+    position: relative;
+    cursor:pointer;
+    margin-top: 1rem;
+}
+
+.checkboxContainer:before{
+    right:15%;
+}
+
+.checkboxContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    top: 200%;
+    left: 35%;
+    height: 2.5rem;
+    width: 2.5rem;
+    z-index: 1;
+}
+
+.checkboxContainer:hover input ~ .checkmark {
+    background-color: #fecb00;
+}
+
+.checkboxContainer:focus input ~ .checkmark {
+    background-color: #fecb00;
+}
+
+.checkboxContainer input:checked ~ .checkmark {
+    background-color: #f41532;
+}
+
+.checkmark {
+    position: absolute;
+    top: 200%;
+    left: 35%;
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: #eee;
+    border: 0.4rem solid #000;
+}
+
+.placeQuery:before{
+    right:15%;
+}
+
+.placeInput{
+    width:15rem;
+    border: 0.4rem solid #000;
+    margin-top:1rem;
+}
+
+.placeInput:hover{
+    background-color: #fecb00;
+}
+
+.placeInput:focus{
+    background-color: #fecb00;
+    outline:none;
+}
+
+.magLabel{
+    width:10rem;
+}
+
+.magLabel:before{
+    right:15%;
+}
+
 .magSlider{
-    width:200px;
+    width:12.5rem;
+    margin-top:0.25rem;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+}
+/* CHROME */
+input[type="range"]::-webkit-slider-runnable-track {
+    background: linear-gradient(90deg, rgba(28,128,188,1) 0%, rgba(254,203,0,1) 50%, rgba(244,21,50,1) 100%);
+    height: 0.5rem;
+    margin-top:1rem;
+}
+/* FIREFOX */
+input[type="range"]::-moz-range-track {
+    background: linear-gradient(90deg, rgba(28,128,188,1) 0%, rgba(254,203,0,1) 50%, rgba(244,21,50,1) 100%);
+    height: 0.5rem;
+}
+/* CHROME */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -8px;
+    background-color: #fecb00;
+    height: 1.5rem;
+    width: 1.5rem;    
+    border:0.2rem solid #000;
+    border-radius: 50%;
+}
+/* FIREFOX */
+input[type="range"]::-moz-range-thumb {
+    border: none;
+    background-color: #fecb00;
+    height: 1rem;
+    width: 1rem;
+    border:0.2rem solid #000;
+}
+
+.dateLabel:before{
+    right:20%;
+}
+
+.dateInput{
+    border: 0.4rem solid #000;
+    margin-top:1rem;
 }
