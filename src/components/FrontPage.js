@@ -9,7 +9,6 @@ const FrontPage=()=> {
     <>
     <div className="frontPage">
       <figure className='frontPageStar' >  
-          {/* <img src={star} alt=""></img> */}
           <div className='frontPageTitles'>
             <h1> Tremors</h1>
             <h2>The international earthquake database</h2>
