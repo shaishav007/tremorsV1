@@ -15,6 +15,7 @@
     "react-leaflet": "^4.1.0",
     "react-router-dom": "^6.4.3",
     "react-scripts": "^5.0.1",
+    "react-spinner": "^0.2.7",
     "spinners-react": "^1.0.7",
     "typewriter": "^8.0.8",
     "typewriter-effect": "^2.19.0",

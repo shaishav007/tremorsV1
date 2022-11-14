@@ -1,0 +1,24 @@
+footer {
+  align-items: center;
+  background-color: black;
+  border: 1px solid #000;
+  box-shadow: 0 3px 10px #4c4a4e;
+  display: flex;
+  font-family: Caveat Brush, cursive;
+  min-height: 5vh;
+  text-align: center;
+  text-transform: capitalize;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.wrapper {
+  max-width: 1200px;
+  width: 85%;
+}
+
+a {
+  color: white;
+}
