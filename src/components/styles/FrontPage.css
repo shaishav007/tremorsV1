@@ -8,11 +8,6 @@
 
 .frontPage {
   font-family: "Bangers", cursive;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 95vh;
 }
 h1 {
   font-size: clamp(3.4375rem, 2.875rem + 2.8125vw, 6.25rem);
@@ -71,8 +66,8 @@ a {
 }
 
 .frontPageStar {
-  height: 700px;
-  width: 700px;
+  height: 95vh;
+
   filter: drop-shadow(30px 10px 4px #000000);
   background: url(../Assets/Images/star.png);
   background-repeat: no-repeat;
