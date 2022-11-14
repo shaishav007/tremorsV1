@@ -11,6 +11,7 @@ import {getDatabase, ref, set} from 'firebase/database';
 //this one is importing our specific firebase settings
 import Firebase from './Firebase';
 import './styles/MapPage.css'
+import Footer from './Footer';
 
 
 const MapPage = () => {
@@ -194,6 +195,8 @@ const MapPage = () => {
 
 
   return (
+
+    <>
     <div className='mapPage wrapper'>
         <h2 className='mapPageH2'>Tremors</h2>
         <InputFormComponent coordsAndMarkerData={setDataToDisplay}/>
@@ -214,6 +217,8 @@ const MapPage = () => {
             </div>
         </div>    
     </div>
+    <Footer/>
+    </>
   )
 }
 

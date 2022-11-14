@@ -2,9 +2,11 @@ import React from 'react'
 import "../components/styles/FrontPage.css"
 
 import { Link } from 'react-router-dom'
+import Footer from './Footer'
 
 const FrontPage=()=> {
   return (
+    <>
     <div className="frontPage">
       <figure className='frontPageStar' >  
           {/* <img src={star} alt=""></img> */}
@@ -23,8 +25,10 @@ const FrontPage=()=> {
             </Link>
           </div>
         </figure>
+        
     </div>
-            
+    <Footer/>  
+    </>
         
 
     
