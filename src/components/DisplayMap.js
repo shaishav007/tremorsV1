@@ -4,6 +4,8 @@ import "./styles/DisplayMap.css"
 import boomSvg from '../components/Assets/Images/boomSvg.svg'
 
 
+import Legend from './Legend';
+
 
 //this is exactly like any other component just defined inside the file instead of outside, THIS IS responsible for changing the center
 function ChangeView({center,zoom}){
@@ -11,7 +13,8 @@ function ChangeView({center,zoom}){
     map.setView(center,zoom);
     return null;
 }
-// Icon options
+
+
 
 // Create custom icon
 const customIcon = (mag) => {
@@ -31,11 +34,16 @@ const customIcon = (mag) => {
     })
 }
 
+
+
+
 const DisplayMap = (props) => {
-    // console.log(props.markerPopupInfo[0].coords[1],props.markerPopupInfo[0].coords[0])
-    // console.log('marker popup info',props.markerPopupInfo);
+
+
+
     return (
-        <div>
+        <div className='mapComponentsContainer'>
+                <Legend earthquakesFound={props.markerPopupInfo.length}/>
                 {/* Top container is considered immutable so a changeView or any other named object has to be below this as a child */}
                 <MapContainer center={[props.latitude,props.longitude]} zoom={2} scrollWheelZoom={false}> 
                      {/* just made a component here and tried the setView function on this */}
@@ -45,8 +53,10 @@ const DisplayMap = (props) => {
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
                         {/* The data is stored in markerPopupInfo, for each item in it generate a marker component. */}
-                        
+                      
+                      
                         {
+                            
                             props.markerPopupInfo!==[]?
                             props.markerPopupInfo.map((item)=>{
                                 return(
@@ -54,11 +64,13 @@ const DisplayMap = (props) => {
                                     position={[item.coords[1],item.coords[0]]} 
                                     icon={customIcon(item.popupInfo.magnitude)}
                                     key={item.id}
+                                    
                                     >
                                     <Popup>
                                     Magnitude:{item.popupInfo.magnitude}, <br/>
                                     Place:{item.popupInfo.place},
                                     responder:{item.popupInfo.responder}
+                                    
                                     </Popup>
                                 </Marker>
                                 )
