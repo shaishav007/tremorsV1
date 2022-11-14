@@ -3,15 +3,12 @@ import L from 'leaflet';
 import "./styles/DisplayMap.css"
 import boomSvg from '../components/Assets/Images/boomSvg.svg'
 
-
-
 //this is exactly like any other component just defined inside the file instead of outside, THIS IS responsible for changing the center
 function ChangeView({center,zoom}){
     const map = useMap();
     map.setView(center,zoom);
     return null;
 }
-// Icon options
 
 // Create custom icon
 const customIcon = (mag) => {

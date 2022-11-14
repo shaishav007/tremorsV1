@@ -100,8 +100,6 @@ const handleSubmit = (e) => {
 }
 
 //after all these we need to just add stuff to the array so that we can pass the values to the parent
-
-
     const handleLast24Hours=(e)=>{
         //if this is true, then just make the query here and send the data for map based on this query
 
@@ -112,7 +110,6 @@ const handleSubmit = (e) => {
         }else{
             const presentDateObject = new Date()
             const presentDate = `${presentDateObject.getFullYear()}-${presentDateObject.getMonth()+1}-${presentDateObject.getDate()}`;
-            
             
             const yesterday = `${presentDateObject.getFullYear()}-${presentDateObject.getMonth()+1}-${presentDateObject.getDate()-1}`;
            
@@ -133,9 +130,6 @@ const handleSubmit = (e) => {
                 console.log(err);
             })
         }
-        
-        
-       
     }
 
   return (
