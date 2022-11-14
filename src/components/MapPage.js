@@ -201,7 +201,7 @@ const MapPage = () => {
             <div className="containerForMap">
                 {
                 displayMapNow
-                ?<DisplayMap latitude={latitude} longitude={longitude} markerPopupInfo={markerData}/>
+                ?<DisplayMap latitude={latitude} longitude={longitude} markerPopupInfo={markerData} circleCenter={[]}/>
                 :<p className="errorMessage">Try filling the form up</p>
                 }
             </div>

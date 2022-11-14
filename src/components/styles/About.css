@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+
 
 * {
   box-sizing: border-box;
@@ -35,7 +35,7 @@ figure {
   font-family: "Bangers", cursive;
   color: black;
   padding: 10px;
-  width: 450px;
+  width: fit-content;
   margin: 0 auto;
   border-bottom: #fecb00 5px solid;
 }

@@ -1,0 +1,43 @@
+.mapComponentsContainer{
+    position: relative;
+}
+.legend{
+    position: absolute;
+    width: 100px;
+    height: fit-content;
+    right: 0;
+    top: 0;
+    background: #34958288;
+    z-index: 100000;
+    font-family: bangers;
+    text-align: center;
+}
+
+.legendUl{
+    list-style: none;
+    text-align: left;
+}
+
+.colorbox{
+    width: 10px;
+    height: 10px;
+    background: green;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.upto3{
+    background: #2481C1;
+}
+
+.threeTo6{
+    background: #FFCA00;
+}
+
+.sixTo7{
+
+}
+
+.above7{
+
+}
