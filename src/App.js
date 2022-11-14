@@ -20,6 +20,7 @@ function App() {
             <Route path='/mapPage' element={ <MapPage /> } />
             <Route path="*" element={ <ErrorPage /> } />             
       </Routes>
+      
     </div>
 
   );
