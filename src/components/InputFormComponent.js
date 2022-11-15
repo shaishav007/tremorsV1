@@ -141,13 +141,15 @@ const handleSubmit = (e) => {
                 <label htmlFor='minValue' className='queryLabel magLabel'>Min Magnitude: {minState}</label>
                 <input type="range" name='minValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours} value={minState} className='magSlider'/>
             </div>
-            <div className="queryContainer">
-                <label htmlFor='startDate' className='queryLabel dateLabel'>Start Date </label>
-                <input type="date" name='startDate' onChange={getDateQuery} disabled={last24hours} value={startDateState} className='dateInput'/>
-            </div>
-            <div className="queryContainer">
-                <label htmlFor='endDate' className='queryLabel dateLabel'>End Date </label>
-                <input type="date" name='endDate' onChange={getDateQuery} disabled={last24hours} value={endDateState} className='dateInput'/>
+            <div className='dateContainer'>
+                <div className="queryContainer">
+                    <label htmlFor='startDate' className='queryLabel dateLabel'>Start Date </label>
+                    <input type="date" name='startDate' onChange={getDateQuery} disabled={last24hours} value={startDateState} className='dateInput'/>
+                </div>
+                <div className="queryContainer">
+                    <label htmlFor='endDate' className='queryLabel dateLabel'>End Date </label>
+                    <input type="date" name='endDate' onChange={getDateQuery} disabled={last24hours} value={endDateState} className='dateInput'/>
+                </div>
             </div>
         </form>
             {/* { error && <div><p className="errorMessage formError">{ error }</p></div> } */}
