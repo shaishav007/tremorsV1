@@ -208,7 +208,7 @@ const MapPage = () => {
                 :<p className="errorMessage">Try filling the form up</p>
                 }
             </div>
-            <div className="containerForStats">
+            <div>
                 {
                 !isHeroObjectReady
                     ?<HeroStatsLoader />

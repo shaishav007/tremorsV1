@@ -1,16 +1,20 @@
+.OnlyShowOnTablet{
+    display:none;
+}
 
 .heroStats{
     border: 0.4rem solid #000;
     width:clamp(18.75rem, 18rem + 3.75vw, 22.5rem);
     height:clamp(31.5rem, 31.25rem + 0vw, 31.5rem);
     max-width: 96%;
-    margin:0 auto;
+    margin:1rem auto;
 }
 
 .heroContainer{
     display:flex;
     flex-direction: column-reverse;
     align-items: center;
+    margin:0 auto;
 }
 
 img{
@@ -143,4 +147,44 @@ img{
     z-index: -1;
     background-color:white;
     border: 0.4rem solid #000;
+}
+@media (min-width:700px) and (max-width:1077px){
+    .heroStats{
+        width:clamp(28.125rem, -32.9705rem + 195.5056vw, 60.75rem);
+        max-height:7.5rem;
+        max-width:80%;
+        display:flex;
+        flex-wrap: wrap;
+        margin-top:-1rem;
+    }
+    .heroContainer{
+        margin:0.25rem auto;
+        max-width:95%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap:1rem;
+    }
+    .heroImageContainer{
+        margin:0 auto;
+    }
+    .heroIncidents{
+        grid-column:3;
+    }
+    .heroIncidents:after{
+        border-top-color:transparent;
+    }
+    .heroFooter{
+        margin-top:0rem;
+    }
+    .OnlyShowOnTablet{
+        display:block;
+        margin:0 auto;
+    }
+    .tabletHidden{
+        display:none;
+    }
+    .heroImageContainer{
+        height:100px;
+        width:100px;
+    }
 }
