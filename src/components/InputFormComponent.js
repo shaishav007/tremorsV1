@@ -7,14 +7,11 @@ const InputFormComponent = (props) => {
 
     //new states
     const[latitude,setLatitude]= useState(23.5);
-
     const[longitude,setLongitude]= useState(0);
-
     const [ error, setError ] = useState(null);
 
     //lets add the states
-    const [minState,setMin]=useState(0);
-    const [maxState,setMax]=useState(10);
+    const [minState,setMinState]=useState(0);
     const [startDateState,setStartDate] = useState("2021-11-03");
     const [endDateState,setEndDate]= useState("2022-11-03")
     
@@ -54,7 +51,6 @@ const getPlaceQuery=(e)=>{
                     starttime:startDateState,
                     endtime:endDateState,
                     minmagnitude:minState,
-                    maxmagnitude:maxState
                 }
             }).then((earthquakeResponse)=>{
                 console.log(earthquakeResponse.data);
@@ -80,13 +76,8 @@ const getPlaceQuery=(e)=>{
 }
 
 const getRangeQuery=(e)=>{
-    //when e occurs we gotta see where it occured
-    if(e.target.name==='minValue'){
-        //user Set the minimum value here
-        setMin(e.target.value)
-    }else if(e.target.name==='maxValue'){
-        setMax(e.target.value)
-    }
+    setMinState(e.target.value)
+ 
 }
 
 const getDateQuery=(e)=>{
@@ -107,7 +98,6 @@ const handleSubmit = (e) => {
 
         setlast24Hours(!setlast24Hours);
         if (e.target.checked===false){
-           
             props.coordsAndMarkerData(latitude,longitude,[]);
         }else{
             const presentDateObject = new Date()
