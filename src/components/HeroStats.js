@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
 import './styles/HeroStats.css'
 import richMortal from './Assets/Images/richMortal.jpg'
+import geologyTeachers from './Assets/Images/geologyTeacher.png'
+import strongGood from './Assets/Images/strongGood.jpg'
 
 const HeroStats = (props) => {
     const [index,setIndex]=useState(0);
     const heros=['geology teachers','Rich Mortal','Strong Good']
+    const heroImages=[ geologyTeachers, richMortal ,strongGood]
 
     const changeIndex=(e)=>{
         let updatedIndex=0;
@@ -27,7 +30,7 @@ const HeroStats = (props) => {
     <div className='heroStats'>
         <div className='heroContainer'>
             <div className='heroImageContainer'>
-                <img src={richMortal}alt='silhouette of geology teachers or the hero sent to save us from the earthquake'/>
+                <img src={heroImages[index]}alt='silhouette of geology teachers or the hero sent to save us from the earthquake'/>
             </div>
             <div className="heroIncidents">
                 <Typewriter
