@@ -24,9 +24,9 @@ const About = () => {
           <img src={faceImage} alt=""/>
           <div className='aboutImageBackground aboutImageOne'>
             <div className='aboutImageContent'> 
-            <p><a href="https://Shaishav.ca" target="_blank" rel="noreferrer"> Shaishav Vashi</a></p>
-            <p><a href="https://www.linkedin.com/in/shaishavvashi/" target="_blank" rel="noreferrer"> Linkedin</a></p>
-            <p><a href="https://github.com/shaishav007" target="_blank" rel="noreferrer"> Github</a></p>
+            <p><a className='aboutBlack' href="https://Shaishav.ca" target="_blank" rel="noreferrer"> Shaishav Vashi</a></p>
+            <p><a className='aboutBlack' href="https://www.linkedin.com/in/shaishavvashi/" target="_blank" rel="noreferrer"> Linkedin</a></p>
+            <p><a className='aboutBlack' href="https://github.com/shaishav007" target="_blank" rel="noreferrer"> Github</a></p>
             
             
             </div>
@@ -38,10 +38,10 @@ const About = () => {
         <div className='aboutImageBackground aboutImageTwo'>
           <div className='aboutImageContent'> 
           <p>
-            <a href="https://dildeepgill.com" target="_blank" rel="noreferrer"> Dildeep Gill</a>
+            <a className='aboutBlack' href="https://dildeepgill.com" target="_blank" rel="noreferrer"> Dildeep Gill</a>
           </p>  
-          <p><a href="https://www.linkedin.com/in/dildeep-gill-74436214a/" target="_blank" rel="noreferrer"> Linkedin</a></p>
-          <p><a href="https://github.com/dildeepgill" target="_blank" rel="noreferrer"> Github</a></p>
+          <p><a  className='aboutBlack'href="https://www.linkedin.com/in/dildeep-gill-74436214a/" target="_blank" rel="noreferrer"> Linkedin</a></p>
+          <p><a  className='aboutBlack'href="https://github.com/dildeepgill" target="_blank" rel="noreferrer"> Github</a></p>
           
 
         </div>
@@ -52,9 +52,9 @@ const About = () => {
         <img src={faceImage} alt=""/>  
         <div className='aboutImageBackground aboutImageThree'>
           <div className='aboutImageContent'> 
-          <p><a href="https://Tristanthorburn.com" target="_blank" rel="noreferrer">Tristan Thorburn</a></p>
-          <p><a href="https://www.linkedin.com/in/tristanthorburn/" target="_blank" rel="noreferrer"> Linkedin</a></p>
-          <p><a href="https://github.com/TristanThorburn" target="_blank" rel="noreferrer"> Github</a></p>
+          <p><a className='aboutBlack'href="https://Tristanthorburn.com" target="_blank" rel="noreferrer">Tristan Thorburn</a></p>
+          <p><a  className='aboutBlack'href="https://www.linkedin.com/in/tristanthorburn/" target="_blank" rel="noreferrer"> Linkedin</a></p>
+          <p><a  className='aboutBlack'href="https://github.com/TristanThorburn" target="_blank" rel="noreferrer"> Github</a></p>
         </div> 
         </div>
         </figure>
