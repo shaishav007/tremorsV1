@@ -78,9 +78,9 @@
     border: 0.4rem solid #000;
 }
 
-@media (min-width:1079px){
-    .outputContainer{
-        flex-wrap: nowrap;
-        gap:2rem;
+@media (max-width:1199px){
+    .containerForMap{
+        /* width:clamp(20rem, 0rem + 100vw, 74.9375rem); */
+        width:90vw;
     }
 }
