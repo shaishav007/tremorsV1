@@ -13,8 +13,14 @@
     align-items: center;
 }
 
+img{
+    width:100%;
+    height:100%;
+}
+
 .heroImageContainer{
     width:clamp(12.5rem, 12.5rem + 0vw, 12.5rem);
+    height:clamp(12.5rem, 12.5rem + 0vw, 12.5rem);
     display:inline-block;
     border: 0.4rem solid #000;
     background-color: white;
@@ -28,7 +34,7 @@
     border: 0.4rem solid #000;
     font-family: "Bangers", cursive;
     padding:5px 5px;
-    margin:0.5rem auto;
+    margin:1rem auto;
     width:250px;
 }
 
@@ -48,7 +54,7 @@
     content:'';
     position: absolute;
     bottom:-10px;
-    left:50%;
+    left:35%;
     width:0;
     height:0;
     border: 20px solid transparent;
@@ -59,7 +65,7 @@
 }
 
 .heroFooter{
-    margin:1rem auto;
+    margin:2rem auto;
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:1rem;
