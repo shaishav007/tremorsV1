@@ -73,6 +73,8 @@ const getPlaceQuery=(e)=>{
         }
         }).catch((err)=>{
             setError(err.message)
+            console.log(error);
+            
         })
     }
 }
@@ -150,10 +152,6 @@ const handleSubmit = (e) => {
                 <input type="range" name='minValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours} value={minState} className='magSlider'/>
             </div>
             <div className="queryContainer">
-                <label htmlFor='minValue' className='queryLabel magLabel'>Max Magnitude: {maxState}</label>
-                <input type="range" name='maxValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours} value={maxState} className='magSlider'/>
-            </div>
-            <div className="queryContainer">
                 <label htmlFor='startDate' className='queryLabel dateLabel'>Start Date </label>
                 <input type="date" name='startDate' onChange={getDateQuery} disabled={last24hours} value={startDateState} className='dateInput'/>
             </div>
@@ -162,7 +160,8 @@ const handleSubmit = (e) => {
                 <input type="date" name='endDate' onChange={getDateQuery} disabled={last24hours} value={endDateState} className='dateInput'/>
             </div>
         </form>
-            { error && <div><p className="errorMessage formError">{ error }</p></div> }
+            {/* { error && <div><p className="errorMessage formError">{ error }</p></div> } */}
+            
     </div>
   )
 }
