@@ -12,6 +12,9 @@ import {getDatabase, ref, set} from 'firebase/database';
 import Firebase from './Firebase';
 import './styles/MapPage.css'
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
+import arrow from "../components/Assets/Images/arrow.png"
+
 
 
 const MapPage = () => {
@@ -198,7 +201,14 @@ const MapPage = () => {
 
     <>
     <div className='mapPage wrapper'>
-        <h2 className='mapPageH2'>Tremors</h2>
+    <div className='mapPageH1Logo '>
+            <Link exact to="/">
+                <figure className='mapPageArrow'>
+                    <img src={arrow} alt="arrow to home"></img>
+                </figure>
+            </Link>    
+            <h2 className='mapPageH2'>Tremors</h2>
+    </div>    
         <InputFormComponent coordsAndMarkerData={setDataToDisplay}/>
         <div className='outputContainer'>
             <div className="containerForMap">
