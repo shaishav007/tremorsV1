@@ -66,16 +66,17 @@
 
 .errorMessage {
   position: relative;
-  width: clamp(12.5rem, 12.5rem + 0vw, 12.5rem);
-  height: clamp(5rem, 5rem + 0vw, 5rem);
-  background-color: #f41532;
+  width:50%;
+  min-height: clamp(5rem, 5rem + 0vw, 5rem);
+  background-color: #fecb00;
   font-family: "Bangers", cursive;
   font-size: clamp(1.25rem, 1.2rem + 0.25vw, 1.5rem);
   border: 0.4rem solid #000;
-  cursor: pointer;
   padding: 10px 10px;
   text-align: center;
   margin-top: 1rem;
+  letter-spacing: 0.1rem;
+  min-width:220px;
 }
 
 .errorMessage:before {
@@ -84,28 +85,28 @@
   height: 100%;
   position: absolute;
   top: 1rem;
-  right: 10%;
+  right: 5%;
   z-index: -1;
   background-color: white;
   border: 0.4rem solid #000;
 }
 
-
-@media (max-width:1199px){
-    .containerForMap{
-        /* width:clamp(20rem, 0rem + 100vw, 74.9375rem); */
-        width:90vw;
-    }
+.instructions{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .mapPageH2 {
   position: relative;
   font-size: clamp(3rem, 2.7rem + 1.5vw, 4.5rem);
-  background-color: #fecb00;
+  background-color: #f41532;
   border: 0.4rem solid #000;
   font-family: "Bangers", cursive;
   padding: 5px 0px;
   margin: 2rem auto;
+  letter-spacing: 0.1rem;
+  text-shadow: 0px 0px 5px #FFF;
 }
 
 .mapPageH2:before {
@@ -118,6 +119,12 @@
   z-index: -1;
   background-color: white;
   border: 0.4rem solid #000;
+}
+
+@media (max-width:1199px){
+    .containerForMap{
+        width:90vw;
+    }
 }
 
 @media (min-width: 1079px) {

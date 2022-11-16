@@ -53,13 +53,10 @@ const getPlaceQuery=(e)=>{
                     minmagnitude:minState,
                 }
             }).then((earthquakeResponse)=>{
-                console.log(earthquakeResponse.data);
                 if(earthquakeResponse.data.metadata.count===0){
                     props.coordsAndMarkerData(latitude,longitude,[])
                     throw Error(`no earthquakes for ${placeRef.current.value}`);
                 }else{
-                    // console.log( placeRef.current.value,' returned an earthquake lets see it',earthquakeResponse.data);
-
                     //IF YOU ARE GOING TO CHANGE STATES AND PASS DATA, PASS DATA FIRST, DON"T DEPEND ON STATES TO PASS THAT DATA. RESERVE STATE CHANGE ONLY FOR RENDERS NOTHING ELSE
                     props.coordsAndMarkerData(latitude,longitude,earthquakeResponse.data);
                 }
@@ -113,9 +110,7 @@ const handleSubmit = (e) => {
                     endtime:presentDate,
                 }
             }).then((res)=>{
-                //this data means that the original map is here, we can send it to the marker info thing from here
-                // console.log(`24 Hour Search Data`, res.data)
-                
+                //this data means that the original map is here, we can send it to the marker info thing from here              
                 props.coordsAndMarkerData(latitude,longitude,res.data);
     
             }).catch((err)=>{

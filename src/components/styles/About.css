@@ -12,6 +12,10 @@
 }
 .aboutBlack {
   color: black;
+  font-weight:bold;
+  font-family: "Bangers", cursive;
+  font-size: 26px;
+  letter-spacing: 0.1rem;
 }
 
 .aboutUs {
@@ -43,9 +47,13 @@
 }
 .aboutProject {
   text-align: center;
+  font-family: "Bangers", cursive;
   max-width: 600px;
   margin: 0 auto;
   padding: 10px 25px;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
 }
 img {
   width: 100%;
@@ -114,24 +122,23 @@ figure {
 }
 
 .aboutProjectHeader {
-  background: url(../Assets/Images/star.png);
-  background-repeat: no-repeat;
-  background-size: clamp(80px, 45vw, 50px);
-  background-position: center;
+  margin-block:1rem;
   height: 80px;
   display: flex;
+  border-bottom:5px solid #fecb00;
   justify-content: center;
   align-items: center;
-  font-size: 25px;
+  font-size: 36px;
   font-weight: 700;
-  font-family: "Roboto", sans-serif;
+  font-family: "Bangers", cursive;
 }
 
 .aboutProjectPara {
-  font-size: 18px;
+  font-size: 24px;
+  font-family: "Bangers", cursive;
+  letter-spacing: 0.1rem;
   line-height: 1.4;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
 }
 
 @media (max-width: 340px) {

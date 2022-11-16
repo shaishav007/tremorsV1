@@ -50,7 +50,6 @@
     font-family: "Bangers", cursive;
     font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
     border: 0.4rem solid #000;
-    cursor: pointer;
     padding: 10px 10px;
     margin-bottom:2rem;
 }

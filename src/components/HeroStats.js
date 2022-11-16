@@ -30,7 +30,7 @@ const HeroStats = (props) => {
     <div className='heroStats'>    
         <div className='heroContainer'>
             <div className='OnlyShowOnTablet'>
-                <button className='left' onClick={changeIndex} name='previous'>left</button>
+                <button className='left' onClick={changeIndex} name='previous'>Prev</button>
             </div>
             <div className='heroImageContainer'>
                 <img src={heroImages[index]}alt='silhouette of geology teachers or the hero sent to save us from the earthquake'/>
@@ -45,13 +45,13 @@ const HeroStats = (props) => {
                 />
             </div>
             <div className='OnlyShowOnTablet tabletRight'>
-                <button className='right'onClick={changeIndex} name='next'>Right</button>
+                <button className='right'onClick={changeIndex} name='next'>Next</button>
             </div>
         </div>
         <div className='heroFooter tabletHidden'>
-            <button className='left' onClick={changeIndex} name='previous'>left</button>
-            <button className='right' onClick={changeIndex} name='next'>Right</button>
-            <Link to='/about' className="aboutLink"><button className='madeBy'> Made by Dil, Tristan and Shaishav</button></Link>
+            <button className='left' onClick={changeIndex} name='previous'> Prev </button>
+            <button className='right' onClick={changeIndex} name='next'> Next </button>
+            <Link to='/about' className="aboutLink"><button className='madeBy'> Stats since Nov 3, 2022</button></Link>
         </div>    
     </div>
   )

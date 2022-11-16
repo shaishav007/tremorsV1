@@ -134,7 +134,6 @@ img{
     border: 0.4rem solid #000;
     background-color: #fecb00;
     font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
-    cursor: pointer;
 }
 
 .madeBy:before{
