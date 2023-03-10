@@ -21,7 +21,7 @@
     filter:invert(0%) sepia(83%) saturate(7500%) hue-rotate(210deg) brightness(115%) contrast(115%);
 }
   
-  .leaflet-popup-content-wrapper {
+.leaflet-popup-content-wrapper {
     background: yellow;
     color: #333;
     box-shadow: 0 3px 14px rgba(0,0,0,0.4);
@@ -29,9 +29,9 @@
     text-align: center;
     font-family: bangers;
     border: 2px solid black;
-  }
+}
 
-  .leaflet-popup-tip{
+.leaflet-popup-tip{
     background: yellow;
     border: 2px solid black;
     z-index: 10;

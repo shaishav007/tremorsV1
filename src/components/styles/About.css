@@ -1,7 +1,5 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
-
 
 * {
   box-sizing: border-box;
@@ -11,6 +9,13 @@
 
 .about {
   min-height: 95vh;
+}
+.aboutBlack {
+  color: black;
+  font-weight:bold;
+  font-family: "Bangers", cursive;
+  font-size: 26px;
+  letter-spacing: 0.1rem;
 }
 
 .aboutUs {
@@ -38,16 +43,21 @@
   justify-content: center;
   min-height: 250px;
   align-items: center;
-  margin-top: 10px;
+  margin: 60px 0;
 }
 .aboutProject {
   text-align: center;
+  font-family: "Bangers", cursive;
   max-width: 600px;
   margin: 0 auto;
   padding: 10px 25px;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
 }
 img {
   width: 100%;
+  height: 100%;
 }
 figure {
   margin: 0;
@@ -64,7 +74,8 @@ figure {
   margin: 0 auto;
 }
 .aboutImage {
-  width: 250px;
+  width: clamp(12.5rem, 12.5rem + 0vw, 12.5rem);
+  height: clamp(12.5rem, 12.5rem + 0vw, 12.5rem);
   position: relative;
 }
 .aboutImage img {
@@ -77,14 +88,14 @@ figure {
   width: 100%;
   left: 0;
   right: 0;
-  bottom: 3px;
+  bottom: 0px;
   z-index: 5;
   position: absolute;
   transition: 0.5s ease;
   overflow: hidden;
 }
 .aboutImage:hover .aboutImageBackground {
-  height: 98.5%;
+  height: 100%;
 }
 
 .aboutImageContent {
@@ -111,22 +122,30 @@ figure {
 }
 
 .aboutProjectHeader {
-  background: url(../Assets/Images/star.png);
-  background-repeat: no-repeat;
-  background-size: clamp(80px, 45vw, 50px);
-  background-position: center;
+  margin-block:1rem;
   height: 80px;
   display: flex;
+  border-bottom:5px solid #fecb00;
   justify-content: center;
   align-items: center;
-  font-size: 25px;
+  font-size: 36px;
   font-weight: 700;
-  font-family: "Roboto", sans-serif;
+  font-family: "Bangers", cursive;
 }
 
 .aboutProjectPara {
-  font-size: 18px;
+  font-size: 24px;
+  font-family: "Bangers", cursive;
+  letter-spacing: 0.1rem;
   line-height: 1.4;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+}
+
+@media (max-width: 340px) {
+  .aboutLogo {
+    width: 45px;
+  }
+  .aboutUs {
+    transform: translateX(-20px);
+  }
 }
