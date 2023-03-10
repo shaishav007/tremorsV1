@@ -35,5 +35,13 @@
     background: yellow;
     border: 2px solid black;
     z-index: 10;
-  }
-  
+}
+
+@media (min-width:320px) and (max-width:1199px){
+    .leaflet-container{
+        width:100%;
+    }
+    .mapComponentsContainer{
+        width:100%;
+    }
+}
