@@ -3,7 +3,7 @@ function Footer (){
     return( 
     
     <footer>
-        <div class="wrapper">
+        <div className="wrapper">
             <p>Made by <a href="https://Tristanthorburn.com" target="_blank" rel="noreferrer">Tristan Thorburn</a>, 
             <a href="https://Shaishav.ca" target="_blank" rel="noreferrer"> Shaishav Vashi</a>, 
             and 

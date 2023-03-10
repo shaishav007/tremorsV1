@@ -12,6 +12,9 @@ import {getDatabase, ref, set} from 'firebase/database';
 import Firebase from './Firebase';
 import './styles/MapPage.css'
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
+import arrow from "../components/Assets/Images/arrow.png"
+
 
 
 const MapPage = () => {
@@ -64,7 +67,6 @@ const MapPage = () => {
         //get the present data so that we can get the present data
         const presentDateObject = new Date()
         const presentDate = `${presentDateObject.getFullYear()}-${presentDateObject.getMonth()+1}-${presentDateObject.getDate()}`;
-        // console.log(presentDate);
         axios({
             url:'https://earthquake.usgs.gov/fdsnws/event/1/query',
             params:{
@@ -73,7 +75,6 @@ const MapPage = () => {
                 endtime:presentDate,
             }
         }).then((res)=>{
-            // console.log(`WriteToFirebase`,res.data);
             //write this to firebase
             writeToFirebase(res.data);
 
@@ -139,20 +140,15 @@ const MapPage = () => {
             resolved:resolved,
             vacation:vacation
         }
-        // console.log(currentIncidents,resolved,vacation,responder);
-
-
     }
 
     //this one is where the result of the query gets in and we get to decide what gets displayed on the map
     const setDataToDisplay=(lat,long,resultData)=>{
         //this function only sets the right data in the right place
-        // console.log('this goes into feed,state should change',resultData)
         loadStuffInFirebase();
         setLatitude(lat);
         setLongitude(long);
         generateMarkerInfo(resultData);
-        // console.log('about to display map right now')
         setDisplayMapNow(true);
     }
 
@@ -198,17 +194,29 @@ const MapPage = () => {
 
     <>
     <div className='mapPage wrapper'>
-        <h2 className='mapPageH2'>Tremors</h2>
+    <div className='mapPageH1Logo '>
+            <Link exact to="/">
+                <figure className='mapPageArrow'>
+                    <img src={arrow} alt="arrow to home"></img>
+                </figure>
+            </Link>    
+            <h2 className='mapPageH2'>Tremors</h2>
+    </div>    
         <InputFormComponent coordsAndMarkerData={setDataToDisplay}/>
         <div className='outputContainer'>
             <div className="containerForMap">
                 {
                 displayMapNow
                 ?<DisplayMap latitude={latitude} longitude={longitude} markerPopupInfo={markerData} circleCenter={[]}/>
-                :<p className="errorMessage">Try filling the form up</p>
+                :
+                <div className='instructions'>
+                    <p className="errorMessage">1. Click on "Latest 24" to view incidents that have happened within 24 hours or</p>
+                    <p className="errorMessage">2. Search for more specific earthquakes</p>
+                    <p className="errorMessage">3. To see total amount of incidents attended to by each superhero,  scroll through the hero stats</p>
+                </div>
                 }
             </div>
-            <div className="containerForStats">
+            <div>
                 {
                 !isHeroObjectReady
                     ?<HeroStatsLoader />
