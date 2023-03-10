@@ -7,14 +7,11 @@ const InputFormComponent = (props) => {
 
     //new states
     const[latitude,setLatitude]= useState(23.5);
-
     const[longitude,setLongitude]= useState(0);
-
     const [ error, setError ] = useState(null);
 
     //lets add the states
-    const [minState,setMin]=useState(0);
-    const [maxState,setMax]=useState(10);
+    const [minState,setMinState]=useState(0);
     const [startDateState,setStartDate] = useState("2021-11-03");
     const [endDateState,setEndDate]= useState("2022-11-03")
     
@@ -54,16 +51,12 @@ const getPlaceQuery=(e)=>{
                     starttime:startDateState,
                     endtime:endDateState,
                     minmagnitude:minState,
-                    maxmagnitude:maxState
                 }
             }).then((earthquakeResponse)=>{
-                console.log(earthquakeResponse.data);
                 if(earthquakeResponse.data.metadata.count===0){
                     props.coordsAndMarkerData(latitude,longitude,[])
                     throw Error(`no earthquakes for ${placeRef.current.value}`);
                 }else{
-                    // console.log( placeRef.current.value,' returned an earthquake lets see it',earthquakeResponse.data);
-
                     //IF YOU ARE GOING TO CHANGE STATES AND PASS DATA, PASS DATA FIRST, DON"T DEPEND ON STATES TO PASS THAT DATA. RESERVE STATE CHANGE ONLY FOR RENDERS NOTHING ELSE
                     props.coordsAndMarkerData(latitude,longitude,earthquakeResponse.data);
                 }
@@ -80,13 +73,8 @@ const getPlaceQuery=(e)=>{
 }
 
 const getRangeQuery=(e)=>{
-    //when e occurs we gotta see where it occured
-    if(e.target.name==='minValue'){
-        //user Set the minimum value here
-        setMin(e.target.value)
-    }else if(e.target.name==='maxValue'){
-        setMax(e.target.value)
-    }
+    setMinState(e.target.value)
+ 
 }
 
 const getDateQuery=(e)=>{
@@ -107,7 +95,6 @@ const handleSubmit = (e) => {
 
         setlast24Hours(!setlast24Hours);
         if (e.target.checked===false){
-           
             props.coordsAndMarkerData(latitude,longitude,[]);
         }else{
             const presentDateObject = new Date()
@@ -123,9 +110,7 @@ const handleSubmit = (e) => {
                     endtime:presentDate,
                 }
             }).then((res)=>{
-                //this data means that the original map is here, we can send it to the marker info thing from here
-                // console.log(`24 Hour Search Data`, res.data)
-                
+                //this data means that the original map is here, we can send it to the marker info thing from here              
                 props.coordsAndMarkerData(latitude,longitude,res.data);
     
             }).catch((err)=>{
@@ -151,13 +136,15 @@ const handleSubmit = (e) => {
                 <label htmlFor='minValue' className='queryLabel magLabel'>Min Magnitude: {minState}</label>
                 <input type="range" name='minValue' min="0" max="10" step="0.25" onChange={getRangeQuery} disabled={last24hours} value={minState} className='magSlider'/>
             </div>
-            <div className="queryContainer">
-                <label htmlFor='startDate' className='queryLabel dateLabel'>Start Date </label>
-                <input type="date" name='startDate' onChange={getDateQuery} disabled={last24hours} value={startDateState} className='dateInput'/>
-            </div>
-            <div className="queryContainer">
-                <label htmlFor='endDate' className='queryLabel dateLabel'>End Date </label>
-                <input type="date" name='endDate' onChange={getDateQuery} disabled={last24hours} value={endDateState} className='dateInput'/>
+            <div className='dateContainer'>
+                <div className="queryContainer">
+                    <label htmlFor='startDate' className='queryLabel dateLabel'>Start Date </label>
+                    <input type="date" name='startDate' onChange={getDateQuery} disabled={last24hours} value={startDateState} className='dateInput'/>
+                </div>
+                <div className="queryContainer">
+                    <label htmlFor='endDate' className='queryLabel dateLabel'>End Date </label>
+                    <input type="date" name='endDate' onChange={getDateQuery} disabled={last24hours} value={endDateState} className='dateInput'/>
+                </div>
             </div>
         </form>
             {/* { error && <div><p className="errorMessage formError">{ error }</p></div> } */}

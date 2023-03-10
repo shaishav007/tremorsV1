@@ -21,7 +21,7 @@
     filter:invert(0%) sepia(83%) saturate(7500%) hue-rotate(210deg) brightness(115%) contrast(115%);
 }
   
-  .leaflet-popup-content-wrapper {
+.leaflet-popup-content-wrapper {
     background: yellow;
     color: #333;
     box-shadow: 0 3px 14px rgba(0,0,0,0.4);
@@ -29,36 +29,11 @@
     text-align: center;
     font-family: bangers;
     border: 2px solid black;
-  }
+}
 
-  .leaflet-popup-tip{
+.leaflet-popup-tip{
     background: yellow;
     border: 2px solid black;
     z-index: 10;
   }
   
-  .mapComponentsContainer{
-    width:100%;
-    background:black;
-  }
-
-  .descriptionPopup{
-    width:300px;
-    height: 100px;
-    border-radius:0 50% 50% 50%;
-    background:#FECB0099;
-    font-family: bangers;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    border: 2px solid white;
-    position: relative;
-    
-  }
-
-  .closeButton{
-    position: absolute;
-    top:3px;
-    left:3px;
-    background: transparent;
-  }
