@@ -1,6 +1,5 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import "./styles/DisplayMap.css"
-import boomSvg from '../components/Assets/Images/boomSvg.svg';
+import "./styles/DisplayMap.css";
 import { useState, useRef } from "react";
 import { Html, OrbitControls, Stars } from "@react-three/drei";
 import Legend from './Legend';
@@ -28,7 +27,6 @@ const DisplayMap = (props) => {
     const [lerping, setLerping] = useState(false)
     const [to, setTo] = useState()
     const [target, setTarget] = useState()
-    const [selected, setSelected] = useState(-1)
 
     //for the description div
     const [descData,setDescData]=useState(0);
@@ -49,7 +47,7 @@ const DisplayMap = (props) => {
             const descVector = new Vector3(descPosition[0],descPosition[1],descPosition[2]);
         
         return(
-        descData!=0?
+        descData!==0?
         <Html position={descVector} rotation={[0,1,0]}>
             <div className="descriptionPopup">
                 <button className="closeButton" onClick={()=>{setDescData(0)}}>x</button>

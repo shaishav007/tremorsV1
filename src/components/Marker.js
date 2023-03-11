@@ -1,7 +1,4 @@
 import React from 'react'
-import { RGBADepthPacking } from 'three';
-import { Color } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
 
 
 //use latitude and longitude to calculate the right x,y,z
